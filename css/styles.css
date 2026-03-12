@@ -121,7 +121,7 @@ p  { font-size: 1rem; line-height: 1.8; color: var(--slate); }
   width: 100%; display: flex; align-items: center; justify-content: space-between;
 }
 .nav__logo { display: flex; flex-direction: column; align-items: center; line-height: 1; }
-.nav__logo-name    { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: var(--forest); white-space: nowrap; }
+.nav__logo-name    { font-family: 'Playfair Display', var(--font-serif); font-size: 1.1rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: var(--forest); white-space: nowrap; }
 .nav__logo-sub     { font-size: .44rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--slate); margin-top: 5px; white-space: nowrap; }
 
 .nav--transparent .nav__logo-name { color: var(--ivory); }
@@ -309,7 +309,7 @@ p  { font-size: 1rem; line-height: 1.8; color: var(--slate); }
 /* ── Footer ─────────────────────────────────────────────────── */
 .footer { background: var(--charcoal); color: var(--ivory); padding: 6rem 0 2.5rem; }
 .footer__top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 5rem; padding-bottom: 4rem; border-bottom: 1px solid rgba(255,255,255,.1); }
-.footer__brand-name { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: var(--ivory); }
+.footer__brand-name { font-family: 'Playfair Display', var(--font-serif); font-size: 1.3rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: var(--ivory); }
 .footer__brand-sub  { font-size: .55rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-light); margin-top: 3px; margin-bottom: 1.25rem; display: block; }
 .footer__desc { font-size: .85rem; color: rgba(250,249,246,.5); line-height: 1.75; margin-bottom: 1.5rem; }
 .footer__social { display: flex; gap: .75rem; }

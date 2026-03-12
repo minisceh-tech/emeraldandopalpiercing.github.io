@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="240" viewBox="0 0 180 240">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="180" height="240" fill="#f3ede4"/>
+
+  <!-- Outer border -->
+  <rect x="0.4" y="0.4" width="179.2" height="239.2" fill="none" stroke="#1a3322" stroke-width="0.8"/>
+
+  <!-- Inner border -->
+  <rect x="5" y="5" width="170" height="230" fill="none" stroke="#1a3322" stroke-width="0.4" opacity="0.2"/>
+
+  <!-- E -->
+  <text
+    x="90"
+    y="102"
+    font-family="'Playfair Display', Georgia, serif"
+    font-size="80"
+    font-weight="400"
+    fill="#1a3322"
+    text-anchor="middle"
+    dominant-baseline="auto">E</text>
+
+  <!-- Separator line left -->
+  <line x1="45" y1="124" x2="82" y2="124" stroke="#1a3322" stroke-width="0.5" opacity="0.5"/>
+  <!-- Separator diamond -->
+  <rect x="87" y="120" width="6" height="6" fill="#1a3322" transform="rotate(45 90 123)"/>
+  <!-- Separator line right -->
+  <line x1="98" y1="124" x2="135" y2="124" stroke="#1a3322" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- O -->
+  <text
+    x="90"
+    y="210"
+    font-family="'Playfair Display', Georgia, serif"
+    font-size="80"
+    font-weight="400"
+    fill="#1a3322"
+    text-anchor="middle"
+    dominant-baseline="auto">O</text>
+</svg>
