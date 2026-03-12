@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emerald & Opal — Website Transition Checklist</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; font-size: 13px; color: #1a1a1a; padding: 40px; max-width: 900px; margin: 0 auto; }
+    h1 { font-size: 22px; margin-bottom: 4px; color: #2C4A3E; }
+    .subtitle { font-size: 13px; color: #666; margin-bottom: 30px; }
+    h2 { font-size: 15px; background: #2C4A3E; color: white; padding: 8px 12px; margin: 28px 0 10px; border-radius: 3px; page-break-after: avoid; }
+    h3 { font-size: 13px; font-weight: bold; color: #2C4A3E; margin: 16px 0 6px 0; border-bottom: 1px solid #ddd; padding-bottom: 4px; page-break-after: avoid; }
+    .item { display: flex; align-items: flex-start; gap: 10px; padding: 5px 0; border-bottom: 1px dotted #e0e0e0; }
+    .item:last-child { border-bottom: none; }
+    .box { width: 16px; height: 16px; min-width: 16px; border: 1.5px solid #2C4A3E; margin-top: 1px; }
+    .text { line-height: 1.5; }
+    .note { background: #f5f0e8; border-left: 3px solid #BEA55A; padding: 8px 12px; margin: 10px 0; font-size: 12px; line-height: 1.6; }
+    .warning { background: #fff3f3; border-left: 3px solid #8B2020; padding: 8px 12px; margin: 10px 0; font-size: 12px; line-height: 1.6; }
+    @media print {
+      body { padding: 20px; }
+      h2 { page-break-after: avoid; }
+      .item { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Emerald &amp; Opal Piercing Studio</h1>
+  <div class="subtitle">Website Transition Checklist — Wix → GitHub Pages + Vagaro &nbsp;|&nbsp; Print and check off as you go</div>
+
+  <div class="warning">⚠ DO NOT cancel Wix until every single step in this checklist is complete and confirmed working.</div>
+
+  <!-- ── PHASE 1 ── -->
+  <h2>PHASE 1 — Export Everything from Wix First</h2>
+
+  <h3>Export Your Contacts</h3>
+  <div class="item"><div class="box"></div><div class="text">Open your browser and go to wix.com</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Log In" in the top right corner</div></div>
+  <div class="item"><div class="box"></div><div class="text">Enter your email address and password</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click on your site to open the dashboard</div></div>
+  <div class="item"><div class="box"></div><div class="text">In the left sidebar, click "CRM" or "Contacts"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Look for an "Import/Export" button near the top of the page</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Export Contacts"</div></div>
+  <div class="item"><div class="box"></div><div class="text">When the file downloads, move it to your Desktop and rename it "Wix Contacts.csv"</div></div>
+
+  <h3>Export Your Booking History</h3>
+  <div class="item"><div class="box"></div><div class="text">In the left sidebar, click "Bookings"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Appointments"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Look for an Export or Download button (may be a small icon near the top right)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Download and save to your Desktop, rename it "Wix Bookings.csv"</div></div>
+
+  <h3>Export Email Subscribers</h3>
+  <div class="item"><div class="box"></div><div class="text">In the left sidebar, click "Email Marketing"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Look for "Contacts" or "Subscribers"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click Export and save to Desktop, rename it "Wix Subscribers.csv"</div></div>
+
+  <h3>Export Financial Records</h3>
+  <div class="item"><div class="box"></div><div class="text">In the left sidebar, click "Finances" or "Payments"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Look for an Export button</div></div>
+  <div class="item"><div class="box"></div><div class="text">Export your transaction history and save to Desktop, rename it "Wix Payments.csv"</div></div>
+  <div class="note">💡 Keep these financial records for tax purposes even if you don't import them into Vagaro.</div>
+
+  <h3>Download Your Photos from Wix</h3>
+  <div class="item"><div class="box"></div><div class="text">In the left sidebar, click "Media" or "Media Manager"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Press Ctrl+A to select all photos</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Download"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Save to a folder on your computer — you likely already have most of these but double check</div></div>
+
+  <!-- ── PHASE 2 ── -->
+  <h2>PHASE 2 — Transfer Your Domain Out of Wix</h2>
+
+  <div class="note">💡 Start this FIRST because it takes 5–7 days. Your Wix site stays completely live the whole time.</div>
+
+  <h3>Unlock Your Domain in Wix</h3>
+  <div class="item"><div class="box"></div><div class="text">In your Wix dashboard, click "Domains" in the left sidebar</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click on emeraldandopalpiercing.com</div></div>
+  <div class="item"><div class="box"></div><div class="text">Look for a "Domain Lock" or "Lock" toggle — make sure it is turned OFF (unlocked)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Transfer away from Wix"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Follow the steps Wix shows you</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check your email — Wix will send you an authorization code called an EPP code</div></div>
+  <div class="item"><div class="box"></div><div class="text">Copy that code and paste it into a Notes app or document — you will need it in the next step</div></div>
+
+  <h3>Set Up a Namecheap Account (Your New Domain Home)</h3>
+  <div class="item"><div class="box"></div><div class="text">Open a new browser tab and go to namecheap.com</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Sign Up" in the top right corner</div></div>
+  <div class="item"><div class="box"></div><div class="text">Enter your name, email address, and create a password</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check your email and click the verification link Namecheap sends you</div></div>
+  <div class="item"><div class="box"></div><div class="text">Log back into namecheap.com</div></div>
+
+  <h3>Transfer Your Domain to Namecheap</h3>
+  <div class="item"><div class="box"></div><div class="text">In the top menu, hover over "Domains" and click "Transfer"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Type emeraldandopalpiercing.com in the search box and click the arrow/search button</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Transfer" next to your domain</div></div>
+  <div class="item"><div class="box"></div><div class="text">When it asks for the EPP/Authorization code, paste in the code from your email</div></div>
+  <div class="item"><div class="box"></div><div class="text">Add to cart and complete the purchase (approximately $10–15, includes one year of registration)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check your email — you will receive confirmation emails from both Wix and Namecheap</div></div>
+  <div class="item"><div class="box"></div><div class="text">If either email asks you to "approve" or "confirm" the transfer, click the link to approve it</div></div>
+  <div class="item"><div class="box"></div><div class="text">Wait 5–7 days — you will receive a final email when the transfer is 100% complete</div></div>
+  <div class="item"><div class="box"></div><div class="text">✓ Transfer complete — check Namecheap dashboard and confirm domain shows up under "Domain List"</div></div>
+
+  <!-- ── PHASE 3 ── -->
+  <h2>PHASE 3 — Set Up Vagaro</h2>
+
+  <h3>Create Your Vagaro Account</h3>
+  <div class="item"><div class="box"></div><div class="text">Go to vagaro.com</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Get Started Free" or "Sign Up"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Select "Business" when asked what type of account</div></div>
+  <div class="item"><div class="box"></div><div class="text">Choose "Salon" or "Beauty" as your business type</div></div>
+  <div class="item"><div class="box"></div><div class="text">Enter business name: Emerald &amp; Opal Piercing Studio</div></div>
+  <div class="item"><div class="box"></div><div class="text">Enter your email address and create a password</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check your email and verify your Vagaro account</div></div>
+  <div class="item"><div class="box"></div><div class="text">Complete the setup wizard — enter your phone number: 503-217-4065</div></div>
+  <div class="item"><div class="box"></div><div class="text">Enter address: Inside Muse Hair Design, NW 23rd Avenue, Portland, OR</div></div>
+
+  <h3>Set Up Your Services</h3>
+  <div class="item"><div class="box"></div><div class="text">In the Vagaro dashboard, click "Services" in the left sidebar</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Add Service" and add: <strong>1 Ear Lobe Piercing</strong> — $45 — set a duration (suggest 30 min)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Add Service" and add: <strong>2 Ear Lobe Piercings</strong> — $70 — set a duration (suggest 30 min)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Add Service" and add: <strong>Child's Ear Piercing</strong> — $70 — set a duration (suggest 30 min)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Add Service" and add: <strong>Jewelry Consultation</strong> — $25 — set a duration (suggest 30 min)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Add Service" and add: <strong>Piercing Party</strong> — mark as "Call for Pricing" or set a deposit amount</div></div>
+
+  <h3>Set Your Availability / Hours</h3>
+  <div class="item"><div class="box"></div><div class="text">In the left sidebar, click "Hours" or "Availability" or "Schedule"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Set which days of the week you work</div></div>
+  <div class="item"><div class="box"></div><div class="text">Set your start and end times for each day</div></div>
+  <div class="item"><div class="box"></div><div class="text">Save your hours</div></div>
+
+  <h3>Set Up Consent Forms</h3>
+  <div class="item"><div class="box"></div><div class="text">In the left sidebar, look for "Forms" or "Intake Forms" or "Consent Forms"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Add New Form"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Create an <strong>Adult Consent Form</strong> — include: client name, date of birth, any allergies, acknowledgment of aftercare instructions, signature line</div></div>
+  <div class="item"><div class="box"></div><div class="text">Create a <strong>Minor Consent Form</strong> — include: child's name, child's date of birth, parent/guardian name, relationship to child, DTaP vaccination acknowledgment, parent signature line</div></div>
+  <div class="item"><div class="box"></div><div class="text">Attach the Adult form to: 1 Ear Lobe, 2 Ear Lobe, Jewelry Consultation</div></div>
+  <div class="item"><div class="box"></div><div class="text">Attach the Minor form to: Child's Ear Piercing</div></div>
+
+  <h3>Set Up Automated Reminders</h3>
+  <div class="item"><div class="box"></div><div class="text">In the left sidebar, click "Notifications" or "Reminders" or "Messages"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Turn on email reminder — set to send 24 hours before appointment</div></div>
+  <div class="item"><div class="box"></div><div class="text">Customize the email message to include your studio name, address (Inside Muse Hair Design, NW 23rd), and any instructions</div></div>
+  <div class="item"><div class="box"></div><div class="text">Turn on text (SMS) reminder — set to send 2 hours before appointment</div></div>
+  <div class="item"><div class="box"></div><div class="text">Customize the text message</div></div>
+  <div class="item"><div class="box"></div><div class="text">Turn on booking confirmation email — sent immediately when someone books</div></div>
+  <div class="item"><div class="box"></div><div class="text">Save all notification settings</div></div>
+
+  <h3>Test Your Booking System</h3>
+  <div class="item"><div class="box"></div><div class="text">Find your Vagaro booking page link (usually vagaro.com/yourbusinessname)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Open it in a new browser tab</div></div>
+  <div class="item"><div class="box"></div><div class="text">Book a test appointment using your own name and email</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check that you receive a confirmation email</div></div>
+  <div class="item"><div class="box"></div><div class="text">Wait for the reminder to come through (or check that the reminder is set up)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Go back into Vagaro and cancel the test appointment</div></div>
+
+  <h3>Get Your Vagaro Embed Code</h3>
+  <div class="item"><div class="box"></div><div class="text">In the Vagaro dashboard, click "Online Booking" or "Marketing" or "Website Widget"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Look for "Embed" or "Add to Website" or "Widget"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click it and copy the code that appears (it will start with &lt;iframe or &lt;script)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Paste it into a Notes document and save — you will give this to Claude to add to your website</div></div>
+
+  <h3>Import Your Wix Contacts into Vagaro</h3>
+  <div class="item"><div class="box"></div><div class="text">In the Vagaro left sidebar, click "Clients"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Look for "Import" button</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Choose File" and select the "Wix Contacts.csv" file from your Desktop</div></div>
+  <div class="item"><div class="box"></div><div class="text">Vagaro will show you a column-matching screen — match First Name to First Name, Last Name to Last Name, Email to Email, Phone to Phone</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Import"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Open your Clients list and verify a few names came through correctly</div></div>
+
+  <!-- ── PHASE 4 ── -->
+  <h2>PHASE 4 — Finish Your New Website</h2>
+
+  <h3>Add the Vagaro Booking Widget</h3>
+  <div class="item"><div class="box"></div><div class="text">Open your conversation with Claude (Claude Code)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Paste in the Vagaro embed code and tell Claude: "Add this booking widget to my contact page"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Open file:///C:/Users/minis/piercing-site/contact.html in your browser and confirm the booking widget appears</div></div>
+
+  <h3>Add Holly's Photo</h3>
+  <div class="item"><div class="box"></div><div class="text">Find a photo of yourself you like — should be clear, well-lit, professional-looking</div></div>
+  <div class="item"><div class="box"></div><div class="text">Save a copy of that photo to C:\Users\minis\piercing-site\images\ and name it holly.jpg</div></div>
+  <div class="item"><div class="box"></div><div class="text">Tell Claude: "Add holly.jpg to the about page and homepage"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Open the about page in your browser and confirm your photo appears</div></div>
+
+  <h3>Add a Studio Photo</h3>
+  <div class="item"><div class="box"></div><div class="text">Take a photo of your studio space inside Muse Hair Design</div></div>
+  <div class="item"><div class="box"></div><div class="text">Save it to C:\Users\minis\piercing-site\images\ and name it studio.jpg</div></div>
+  <div class="item"><div class="box"></div><div class="text">Tell Claude: "Add studio.jpg to the about page"</div></div>
+
+  <h3>Update Your Hours</h3>
+  <div class="item"><div class="box"></div><div class="text">Tell Claude your actual working hours (e.g. Tuesday–Saturday, 10am–6pm)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Claude will update the contact page with your real hours</div></div>
+
+  <h3>Set Up Your Contact Form (Formspree)</h3>
+  <div class="item"><div class="box"></div><div class="text">Open a new browser tab and go to formspree.io</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Get Started" and create a free account</div></div>
+  <div class="item"><div class="box"></div><div class="text">Enter your email address and create a password</div></div>
+  <div class="item"><div class="box"></div><div class="text">Verify your email address with the link they send you</div></div>
+  <div class="item"><div class="box"></div><div class="text">Once logged in, click "New Form"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Name it "Emerald &amp; Opal Contact Form" and click "Create Form"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Copy your Form ID — it looks like: xpzgkrwq (a short code shown on the form page)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Tell Claude: "My Formspree form ID is [paste your code here] — update my contact form"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Test it: open contact.html in your browser, fill out the form and submit it</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check your email — confirm you received the test message</div></div>
+
+  <h3>Add Google Maps</h3>
+  <div class="item"><div class="box"></div><div class="text">Open a new browser tab and go to maps.google.com</div></div>
+  <div class="item"><div class="box"></div><div class="text">In the search bar, type: Muse Hair Design Portland Oregon and press Enter</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click on the correct result to open it</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click the "Share" button (it looks like an arrow pointing up/right)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Embed a map" tab</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Copy HTML"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Tell Claude: "Here is my Google Maps embed code — add it to my contact page" and paste the code</div></div>
+
+  <h3>Final Website Review</h3>
+  <div class="item"><div class="box"></div><div class="text">Open file:///C:/Users/minis/piercing-site/index.html in your browser</div></div>
+  <div class="item"><div class="box"></div><div class="text">Read through the Home page — check every word is correct</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click to the About page — check every word is correct</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click to the Services page — check all prices are correct</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click to the Gallery page — check all photos load and labels are correct</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click to the FAQ page — read through and confirm everything is accurate</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click to the Contact page — check hours, phone, email, booking widget, and map all appear</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check the site on your phone by opening the same file:/// link in your phone browser</div></div>
+
+  <!-- ── PHASE 5 ── -->
+  <h2>PHASE 5 — Put Your Website on GitHub (Free Hosting)</h2>
+
+  <h3>Create a GitHub Account</h3>
+  <div class="item"><div class="box"></div><div class="text">Open a new browser tab and go to github.com</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Sign Up" in the top right corner</div></div>
+  <div class="item"><div class="box"></div><div class="text">Enter your email address</div></div>
+  <div class="item"><div class="box"></div><div class="text">Create a password and write it down somewhere safe</div></div>
+  <div class="item"><div class="box"></div><div class="text">Choose a username — something simple like emeraldandopal or hollyemeraldopal</div></div>
+  <div class="item"><div class="box"></div><div class="text">Complete the puzzle to prove you are not a robot</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check your email and click the verification link GitHub sends you</div></div>
+  <div class="item"><div class="box"></div><div class="text">When asked about your plan, choose the free plan</div></div>
+
+  <h3>Create a Repository (Where Your Files Live)</h3>
+  <div class="item"><div class="box"></div><div class="text">Once logged in to GitHub, click the green "New" button or the "+" icon in the top right</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "New repository"</div></div>
+  <div class="item"><div class="box"></div><div class="text">In the "Repository name" box type exactly: piercing-site</div></div>
+  <div class="item"><div class="box"></div><div class="text">Make sure "Public" is selected (not Private)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Leave everything else as-is and click "Create repository" green button at the bottom</div></div>
+
+  <h3>Upload Your Website Files</h3>
+  <div class="item"><div class="box"></div><div class="text">On the page that appears, look for a link that says "uploading an existing file" and click it</div></div>
+  <div class="item"><div class="box"></div><div class="text">Open File Explorer on your computer (the yellow folder icon in your taskbar)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Navigate to C:\Users\minis\piercing-site</div></div>
+  <div class="item"><div class="box"></div><div class="text">Press Ctrl+A to select all files and folders</div></div>
+  <div class="item"><div class="box"></div><div class="text">Drag all selected files from File Explorer into the GitHub upload window in your browser</div></div>
+  <div class="item"><div class="box"></div><div class="text">Wait for all files to finish uploading — this may take a minute or two with the photos</div></div>
+  <div class="item"><div class="box"></div><div class="text">Scroll down on the GitHub page and click the green "Commit changes" button</div></div>
+  <div class="item"><div class="box"></div><div class="text">Wait about 30 seconds for GitHub to process the files</div></div>
+
+  <h3>Turn On GitHub Pages (Makes Your Site Live)</h3>
+  <div class="item"><div class="box"></div><div class="text">Click "Settings" tab at the top of your repository (looks like a gear icon)</div></div>
+  <div class="item"><div class="box"></div><div class="text">In the left sidebar, scroll down and click "Pages"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Under "Source," click the dropdown that says "None" and select "main"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click the "Save" button</div></div>
+  <div class="item"><div class="box"></div><div class="text">Wait 2 minutes, then refresh the page</div></div>
+  <div class="item"><div class="box"></div><div class="text">GitHub will show a green box with your site URL — it will look like: https://yourusername.github.io/piercing-site</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click that URL to open your live site</div></div>
+
+  <h3>Test Your Site on GitHub</h3>
+  <div class="item"><div class="box"></div><div class="text">Click through every page — Home, About, Services, Gallery, FAQ, Contact</div></div>
+  <div class="item"><div class="box"></div><div class="text">Confirm all photos are loading</div></div>
+  <div class="item"><div class="box"></div><div class="text">Confirm the booking widget appears on the Contact page</div></div>
+  <div class="item"><div class="box"></div><div class="text">Confirm the contact form appears</div></div>
+  <div class="item"><div class="box"></div><div class="text">Open the URL on your phone and check the mobile layout looks good</div></div>
+
+  <!-- ── PHASE 6 ── -->
+  <h2>PHASE 6 — Connect Your Domain to Your New Website</h2>
+
+  <div class="note">💡 Only do this after Phase 2 is 100% complete (domain fully transferred to Namecheap) and Phase 5 is fully tested and working.</div>
+
+  <h3>Tell GitHub Your Domain Name</h3>
+  <div class="item"><div class="box"></div><div class="text">Log into github.com</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click on your piercing-site repository</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Settings" tab</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Pages" in the left sidebar</div></div>
+  <div class="item"><div class="box"></div><div class="text">Under "Custom Domain," type: emeraldandopalpiercing.com</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Save"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Leave this GitHub tab open — you will need to refer back to it</div></div>
+
+  <h3>Update Your DNS Settings in Namecheap</h3>
+  <div class="item"><div class="box"></div><div class="text">Open a new tab and log into namecheap.com</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Domain List" in the left sidebar</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Manage" next to emeraldandopalpiercing.com</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Advanced DNS" tab</div></div>
+  <div class="item"><div class="box"></div><div class="text">Look for any existing "A Record" entries and delete them (click the trash icon next to each one)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Add New Record" and add these 4 A Records exactly (one at a time):</div></div>
+  <div class="item"><div class="box"></div><div class="text">&nbsp;&nbsp;&nbsp;&nbsp;Type: A Record &nbsp;|&nbsp; Host: @ &nbsp;|&nbsp; Value: 185.199.108.153 &nbsp;|&nbsp; TTL: Automatic</div></div>
+  <div class="item"><div class="box"></div><div class="text">&nbsp;&nbsp;&nbsp;&nbsp;Type: A Record &nbsp;|&nbsp; Host: @ &nbsp;|&nbsp; Value: 185.199.109.153 &nbsp;|&nbsp; TTL: Automatic</div></div>
+  <div class="item"><div class="box"></div><div class="text">&nbsp;&nbsp;&nbsp;&nbsp;Type: A Record &nbsp;|&nbsp; Host: @ &nbsp;|&nbsp; Value: 185.199.110.153 &nbsp;|&nbsp; TTL: Automatic</div></div>
+  <div class="item"><div class="box"></div><div class="text">&nbsp;&nbsp;&nbsp;&nbsp;Type: A Record &nbsp;|&nbsp; Host: @ &nbsp;|&nbsp; Value: 185.199.111.153 &nbsp;|&nbsp; TTL: Automatic</div></div>
+  <div class="item"><div class="box"></div><div class="text">Add one CNAME Record: Type: CNAME &nbsp;|&nbsp; Host: www &nbsp;|&nbsp; Value: yourgithubusername.github.io &nbsp;|&nbsp; TTL: Automatic</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click the green checkmark or Save button after each record</div></div>
+  <div class="item"><div class="box"></div><div class="text">Wait — DNS changes take 1–4 hours, sometimes up to 48 hours</div></div>
+  <div class="item"><div class="box"></div><div class="text">Type emeraldandopalpiercing.com in your browser — when your new site loads you are live!</div></div>
+
+  <h3>Turn On HTTPS (Free Security Certificate)</h3>
+  <div class="item"><div class="box"></div><div class="text">Go back to GitHub → Settings → Pages</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check the box that says "Enforce HTTPS"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Wait a few minutes and confirm there is a padlock icon when you visit your site</div></div>
+
+  <!-- ── PHASE 7 ── -->
+  <h2>PHASE 7 — Confirm Everything is Working</h2>
+
+  <div class="item"><div class="box"></div><div class="text">Visit emeraldandopalpiercing.com in your browser</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check there is a padlock icon in the browser bar (means site is secure)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click through every page: Home, About, Services, Gallery, FAQ, Contact</div></div>
+  <div class="item"><div class="box"></div><div class="text">Confirm all photos load on every page</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check the site looks correct on your phone</div></div>
+  <div class="item"><div class="box"></div><div class="text">Fill out the contact form with your own name and email and click Send</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check your email inbox — confirm you received the contact form message</div></div>
+  <div class="item"><div class="box"></div><div class="text">Go to the Contact page and make a test booking through the Vagaro widget</div></div>
+  <div class="item"><div class="box"></div><div class="text">Confirm you receive a booking confirmation email</div></div>
+  <div class="item"><div class="box"></div><div class="text">Go into Vagaro and cancel the test appointment</div></div>
+  <div class="item"><div class="box"></div><div class="text">Google "Emerald and Opal Piercing Portland" — confirm the correct website comes up</div></div>
+
+  <!-- ── PHASE 8 ── -->
+  <h2>PHASE 8 — Cancel Wix (Only When Everything Above is Done)</h2>
+
+  <div class="warning">⚠ Do NOT do this phase until every checkbox above is checked. Once you cancel Wix you may lose access to data still stored there.</div>
+
+  <div class="item"><div class="box"></div><div class="text">Log into wix.com one last time</div></div>
+  <div class="item"><div class="box"></div><div class="text">Double-check: do you have a Wix email address like holly@emeraldandopalpiercing.com? If yes, contact Wix support about migrating email before cancelling</div></div>
+  <div class="item"><div class="box"></div><div class="text">Go to Account Settings (click your profile icon top right → Account Settings)</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Billing &amp; Payments" or "Premium Plans"</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click on your current plan</div></div>
+  <div class="item"><div class="box"></div><div class="text">Click "Cancel Plan" and follow the cancellation steps</div></div>
+  <div class="item"><div class="box"></div><div class="text">Take a screenshot of the cancellation confirmation screen</div></div>
+  <div class="item"><div class="box"></div><div class="text">Check your email for a cancellation confirmation from Wix and save it</div></div>
+
+  <br><br>
+  <div class="note">🎉 You're done! Your new website is live at emeraldandopalpiercing.com, your bookings run through Vagaro, and your hosting is free on GitHub Pages.</div>
+  <br>
+  <p style="font-size:11px;color:#999;text-align:center;margin-top:20px;">Emerald &amp; Opal Piercing Studio — Website Transition Checklist</p>
+
+</body>
+</html>

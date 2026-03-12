@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gold Selector — Emerald &amp; Opal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #e8e4dc;
+      font-family: 'DM Sans', Arial, sans-serif;
+      padding: 48px 32px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 28px; font-weight: 300; color: #2C4A3E;
+      text-align: center; margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center; font-size: 11px; color: #888;
+      letter-spacing: 1px; margin-bottom: 48px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .swatch-card {
+      background: white;
+      box-shadow: 0 2px 16px rgba(0,0,0,.1);
+      overflow: hidden;
+    }
+
+    /* Forest green bar — like the card/site header */
+    .bar {
+      background: #2C4A3E;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .bar-left { display: flex; align-items: center; gap: 9px; }
+
+    .monogram {
+      display: inline-flex; flex-direction: column; align-items: center;
+      border: 1px solid; padding: 4px 6px;
+    }
+
+    .mono-letter {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 13px; font-weight: 400; color: #FAF9F6; line-height: 0.85;
+    }
+
+    .mono-rule { display: flex; align-items: center; gap: 2px; margin: 3px 0; }
+    .mono-line { display: inline-block; width: 6px; height: 1px; }
+    .mono-dia  { font-size: 5px; }
+
+    .brand {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; color: #FAF9F6;
+    }
+
+    .bar-tag { font-size: 7px; letter-spacing: 2px; text-transform: uppercase; }
+
+    /* Gold rule strip */
+    .gold-rule { height: 2px; }
+
+    /* Ivory content area */
+    .ivory-area {
+      background: #FAF9F6;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Inline text sample */
+    .sample-label {
+      font-size: 7px; letter-spacing: 2.5px; text-transform: uppercase;
+      display: block; margin-bottom: 4px;
+    }
+
+    .sample-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px; font-weight: 300; color: #2C4A3E; line-height: 1;
+    }
+
+    .sample-row {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 11px; font-style: italic; color: #5C6B63;
+    }
+
+    .sample-dia { font-size: 9px; }
+
+    /* Cream area */
+    .cream-area {
+      background: #F0EDE6;
+      padding: 12px 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .swatch-dot {
+      width: 28px; height: 28px; border-radius: 50%;
+      flex-shrink: 0; border: 1px solid rgba(0,0,0,.08);
+    }
+
+    .swatch-info { display: flex; flex-direction: column; }
+    .swatch-name { font-size: 11px; font-weight: 500; color: #2C4A3E; }
+    .swatch-hex  { font-size: 9px; color: #888; letter-spacing: 1px; }
+
+    /* Current badge */
+    .current-badge {
+      display: inline-block; font-size: 7px; letter-spacing: 1.5px;
+      text-transform: uppercase; background: #e0ddd6;
+      color: #888; padding: 2px 6px; margin-left: 6px; border-radius: 1px;
+    }
+
+    /* Name label under card */
+    .card-name {
+      text-align: center; font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; color: #999; margin-top: 8px;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Choose Your Gold</h2>
+  <p class="subtitle">Each option shown against forest green, ivory, and cream — exactly as it appears on the site and cards</p>
+
+  <div class="grid">
+
+    <!--
+      ─────────────────────────────────────────
+      Helper: each card is built with inline
+      style so the gold color is self-contained.
+      ─────────────────────────────────────────
+    -->
+
+    <!-- 1. CURRENT -->
+    <div>
+      <div class="swatch-card">
+        <div class="bar">
+          <div class="bar-left">
+            <div class="monogram" style="border-color:#BEA55A;">
+              <span class="mono-letter">E</span>
+              <div class="mono-rule"><span class="mono-line" style="background:#BEA55A;"></span><span class="mono-dia" style="color:#BEA55A;">◇</span><span class="mono-line" style="background:#BEA55A;"></span></div>
+              <span class="mono-letter">O</span>
+            </div>
+            <span class="brand">Emerald &amp; Opal</span>
+          </div>
+          <span class="bar-tag" style="color:#BEA55A;">Portland, OR</span>
+        </div>
+        <div class="gold-rule" style="background:linear-gradient(to right,#BEA55A,#d4aa5a,#BEA55A);"></div>
+        <div class="ivory-area">
+          <div>
+            <span class="sample-label" style="color:#BEA55A;">After Your Appointment</span>
+            <div class="sample-heading">Piercing Aftercare</div>
+          </div>
+          <div class="sample-row">
+            <span class="sample-dia" style="color:#BEA55A;">◇</span>
+            Every ear tells a story. We're here to help you write yours.
+          </div>
+          <div class="sample-row" style="font-style:normal;font-size:9px;font-family:'DM Sans',sans-serif;color:#2C4A3E;">
+            ◇ &nbsp;Rinse with sterile saline wound wash twice daily
+          </div>
+        </div>
+        <div class="cream-area">
+          <div class="swatch-dot" style="background:#BEA55A;"></div>
+          <div class="swatch-info">
+            <span class="swatch-name">Current Gold <span class="current-badge">Current</span></span>
+            <span class="swatch-hex">#BEA55A</span>
+          </div>
+        </div>
+      </div>
+      <p class="card-name">Current — too orange</p>
+    </div>
+
+    <!-- 2. WARM CLASSIC GOLD -->
+    <div>
+      <div class="swatch-card">
+        <div class="bar">
+          <div class="bar-left">
+            <div class="monogram" style="border-color:#C9A84C;">
+              <span class="mono-letter">E</span>
+              <div class="mono-rule"><span class="mono-line" style="background:#C9A84C;"></span><span class="mono-dia" style="color:#C9A84C;">◇</span><span class="mono-line" style="background:#C9A84C;"></span></div>
+              <span class="mono-letter">O</span>
+            </div>
+            <span class="brand">Emerald &amp; Opal</span>
+          </div>
+          <span class="bar-tag" style="color:#C9A84C;">Portland, OR</span>
+        </div>
+        <div class="gold-rule" style="background:linear-gradient(to right,#C9A84C,#dbbf6a,#C9A84C);"></div>
+        <div class="ivory-area">
+          <div>
+            <span class="sample-label" style="color:#C9A84C;">After Your Appointment</span>
+            <div class="sample-heading">Piercing Aftercare</div>
+          </div>
+          <div class="sample-row">
+            <span class="sample-dia" style="color:#C9A84C;">◇</span>
+            Every ear tells a story. We're here to help you write yours.
+          </div>
+          <div class="sample-row" style="font-style:normal;font-size:9px;font-family:'DM Sans',sans-serif;color:#2C4A3E;">
+            ◇ &nbsp;Rinse with sterile saline wound wash twice daily
+          </div>
+        </div>
+        <div class="cream-area">
+          <div class="swatch-dot" style="background:#C9A84C;"></div>
+          <div class="swatch-info">
+            <span class="swatch-name">Warm Classic Gold</span>
+            <span class="swatch-hex">#C9A84C</span>
+          </div>
+        </div>
+      </div>
+      <p class="card-name">Less orange, still warm</p>
+    </div>
+
+    <!-- 3. ANTIQUE CHAMPAGNE -->
+    <div>
+      <div class="swatch-card">
+        <div class="bar">
+          <div class="bar-left">
+            <div class="monogram" style="border-color:#BEA55A;">
+              <span class="mono-letter">E</span>
+              <div class="mono-rule"><span class="mono-line" style="background:#BEA55A;"></span><span class="mono-dia" style="color:#BEA55A;">◇</span><span class="mono-line" style="background:#BEA55A;"></span></div>
+              <span class="mono-letter">O</span>
+            </div>
+            <span class="brand">Emerald &amp; Opal</span>
+          </div>
+          <span class="bar-tag" style="color:#BEA55A;">Portland, OR</span>
+        </div>
+        <div class="gold-rule" style="background:linear-gradient(to right,#BEA55A,#d2ba78,#BEA55A);"></div>
+        <div class="ivory-area">
+          <div>
+            <span class="sample-label" style="color:#BEA55A;">After Your Appointment</span>
+            <div class="sample-heading">Piercing Aftercare</div>
+          </div>
+          <div class="sample-row">
+            <span class="sample-dia" style="color:#BEA55A;">◇</span>
+            Every ear tells a story. We're here to help you write yours.
+          </div>
+          <div class="sample-row" style="font-style:normal;font-size:9px;font-family:'DM Sans',sans-serif;color:#2C4A3E;">
+            ◇ &nbsp;Rinse with sterile saline wound wash twice daily
+          </div>
+        </div>
+        <div class="cream-area">
+          <div class="swatch-dot" style="background:#BEA55A;"></div>
+          <div class="swatch-info">
+            <span class="swatch-name">Antique Champagne</span>
+            <span class="swatch-hex">#BEA55A</span>
+          </div>
+        </div>
+      </div>
+      <p class="card-name">Muted, refined — jewelry store feel</p>
+    </div>
+
+    <!-- 4. METALLIC GOLD -->
+    <div>
+      <div class="swatch-card">
+        <div class="bar">
+          <div class="bar-left">
+            <div class="monogram" style="border-color:#D4AF37;">
+              <span class="mono-letter">E</span>
+              <div class="mono-rule"><span class="mono-line" style="background:#D4AF37;"></span><span class="mono-dia" style="color:#D4AF37;">◇</span><span class="mono-line" style="background:#D4AF37;"></span></div>
+              <span class="mono-letter">O</span>
+            </div>
+            <span class="brand">Emerald &amp; Opal</span>
+          </div>
+          <span class="bar-tag" style="color:#D4AF37;">Portland, OR</span>
+        </div>
+        <div class="gold-rule" style="background:linear-gradient(to right,#D4AF37,#e4c358,#D4AF37);"></div>
+        <div class="ivory-area">
+          <div>
+            <span class="sample-label" style="color:#D4AF37;">After Your Appointment</span>
+            <div class="sample-heading">Piercing Aftercare</div>
+          </div>
+          <div class="sample-row">
+            <span class="sample-dia" style="color:#D4AF37;">◇</span>
+            Every ear tells a story. We're here to help you write yours.
+          </div>
+          <div class="sample-row" style="font-style:normal;font-size:9px;font-family:'DM Sans',sans-serif;color:#2C4A3E;">
+            ◇ &nbsp;Rinse with sterile saline wound wash twice daily
+          </div>
+        </div>
+        <div class="cream-area">
+          <div class="swatch-dot" style="background:#D4AF37;"></div>
+          <div class="swatch-info">
+            <span class="swatch-name">Metallic Gold</span>
+            <span class="swatch-hex">#D4AF37</span>
+          </div>
+        </div>
+      </div>
+      <p class="card-name">Bright, classic — bolder contrast</p>
+    </div>
+
+    <!-- 5. AGED GOLD -->
+    <div>
+      <div class="swatch-card">
+        <div class="bar">
+          <div class="bar-left">
+            <div class="monogram" style="border-color:#B8975A;">
+              <span class="mono-letter">E</span>
+              <div class="mono-rule"><span class="mono-line" style="background:#B8975A;"></span><span class="mono-dia" style="color:#B8975A;">◇</span><span class="mono-line" style="background:#B8975A;"></span></div>
+              <span class="mono-letter">O</span>
+            </div>
+            <span class="brand">Emerald &amp; Opal</span>
+          </div>
+          <span class="bar-tag" style="color:#B8975A;">Portland, OR</span>
+        </div>
+        <div class="gold-rule" style="background:linear-gradient(to right,#B8975A,#ccaa72,#B8975A);"></div>
+        <div class="ivory-area">
+          <div>
+            <span class="sample-label" style="color:#B8975A;">After Your Appointment</span>
+            <div class="sample-heading">Piercing Aftercare</div>
+          </div>
+          <div class="sample-row">
+            <span class="sample-dia" style="color:#B8975A;">◇</span>
+            Every ear tells a story. We're here to help you write yours.
+          </div>
+          <div class="sample-row" style="font-style:normal;font-size:9px;font-family:'DM Sans',sans-serif;color:#2C4A3E;">
+            ◇ &nbsp;Rinse with sterile saline wound wash twice daily
+          </div>
+        </div>
+        <div class="cream-area">
+          <div class="swatch-dot" style="background:#B8975A;"></div>
+          <div class="swatch-info">
+            <span class="swatch-name">Aged Gold</span>
+            <span class="swatch-hex">#B8975A</span>
+          </div>
+        </div>
+      </div>
+      <p class="card-name">Earthy, understated — very wearable</p>
+    </div>
+
+    <!-- 6. PALE GOLD -->
+    <div>
+      <div class="swatch-card">
+        <div class="bar">
+          <div class="bar-left">
+            <div class="monogram" style="border-color:#C8B06A;">
+              <span class="mono-letter">E</span>
+              <div class="mono-rule"><span class="mono-line" style="background:#C8B06A;"></span><span class="mono-dia" style="color:#C8B06A;">◇</span><span class="mono-line" style="background:#C8B06A;"></span></div>
+              <span class="mono-letter">O</span>
+            </div>
+            <span class="brand">Emerald &amp; Opal</span>
+          </div>
+          <span class="bar-tag" style="color:#C8B06A;">Portland, OR</span>
+        </div>
+        <div class="gold-rule" style="background:linear-gradient(to right,#C8B06A,#dcc688,#C8B06A);"></div>
+        <div class="ivory-area">
+          <div>
+            <span class="sample-label" style="color:#C8B06A;">After Your Appointment</span>
+            <div class="sample-heading">Piercing Aftercare</div>
+          </div>
+          <div class="sample-row">
+            <span class="sample-dia" style="color:#C8B06A;">◇</span>
+            Every ear tells a story. We're here to help you write yours.
+          </div>
+          <div class="sample-row" style="font-style:normal;font-size:9px;font-family:'DM Sans',sans-serif;color:#2C4A3E;">
+            ◇ &nbsp;Rinse with sterile saline wound wash twice daily
+          </div>
+        </div>
+        <div class="cream-area">
+          <div class="swatch-dot" style="background:#C8B06A;"></div>
+          <div class="swatch-info">
+            <span class="swatch-name">Pale Gold</span>
+            <span class="swatch-hex">#C8B06A</span>
+          </div>
+        </div>
+      </div>
+      <p class="card-name">Soft, luminous — closest to real 14K</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

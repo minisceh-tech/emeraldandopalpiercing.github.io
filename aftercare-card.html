@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aftercare Card — Emerald &amp; Opal Piercing Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest: #2C4A3E;
+      --gold:   #BEA55A;
+      --ivory:  #FAF9F6;
+      --cream:  #F0EDE6;
+      --slate:  #5C6B63;
+      --border: #DDD9D0;
+      --red:    #8B2020;
+    }
+
+    body {
+      background: #dedad2;
+      font-family: 'DM Sans', Arial, sans-serif;
+      padding: 40px 20px;
+    }
+
+    .controls {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin-bottom: 36px;
+    }
+
+    .print-btn {
+      padding: 10px 28px; background: var(--forest); color: white;
+      border: none; border-radius: 2px; font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+      font-family: 'DM Sans', Arial, sans-serif;
+    }
+
+    .print-btn:hover { background: #1e3329; }
+    .note { font-size: 11px; color: #888; font-family: Arial, sans-serif; }
+
+    .card-label {
+      text-align: center; font-size: 9px; letter-spacing: 2px;
+      text-transform: uppercase; color: #bbb; margin-bottom: 8px;
+      font-family: Arial, sans-serif;
+    }
+
+    .card-wrap { margin-bottom: 36px; }
+
+    /* ── 4×6 landscape ── */
+    .card {
+      width: 6in; height: 4in;
+      margin: 0 auto;
+      background: var(--ivory);
+      box-shadow: 0 4px 28px rgba(0,0,0,.2);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── Top bar ── */
+    .top-bar {
+      background: var(--forest);
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      padding: 9px 26px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .top-bar-brand { display: flex; align-items: center; gap: 9px; }
+
+    .monogram-xs {
+      border: 1px solid var(--gold); padding: 3px 5px;
+      display: inline-flex; flex-direction: column; align-items: center;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+
+    .mono-letter-xs {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 10px; font-weight: 400; color: var(--ivory); line-height: 0.85;
+    }
+
+    .mono-rule-xs { display: flex; align-items: center; gap: 2px; margin: 2px 0; }
+    .mono-line-xs { display: inline-block; width: 5px; height: 1px; background: var(--gold); }
+    .mono-diamond-xs { color: var(--gold); font-size: 4px; }
+
+    .top-bar-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 12px; font-weight: 400; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--ivory);
+    }
+
+    .top-bar-right {
+      font-size: 6.5px; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    .gold-strip {
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), #D0BB76, var(--gold));
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      flex-shrink: 0;
+    }
+
+    /* ── Bottom footer bar ── */
+    .card-footer {
+      background: var(--forest);
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      padding: 9px 26px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .card-footer p {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 10px; font-style: italic; color: rgba(250,249,246,.8);
+    }
+
+    .card-footer span {
+      font-size: 6.5px; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    /* ════════════════════════════════
+       FRONT
+    ════════════════════════════════ */
+
+    .front .content {
+      flex: 1; display: flex; overflow: hidden;
+    }
+
+    .front .title-panel {
+      width: 2in; flex-shrink: 0;
+      background: var(--cream);
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      padding: 20px 22px;
+      display: flex; flex-direction: column; justify-content: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      font-size: 6.5px; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 8px;
+    }
+
+    .front .title-panel h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 26px; font-weight: 300; color: var(--forest);
+      line-height: 1.05; margin-bottom: 12px;
+    }
+
+    .front .title-panel p {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 10.5px; font-style: italic; font-weight: 300;
+      color: var(--slate); line-height: 1.55;
+    }
+
+    .front .cols {
+      flex: 1; display: grid; grid-template-columns: 1fr 1fr;
+    }
+
+    .front .col { padding: 16px 18px; }
+    .front .col:first-child { border-right: 1px solid var(--border); }
+
+    .col-heading {
+      display: flex; align-items: center; gap: 6px; margin-bottom: 11px;
+    }
+
+    .col-heading-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 12.5px; font-weight: 500; letter-spacing: 1px; white-space: nowrap;
+    }
+
+    .col-heading-text.do    { color: var(--forest); }
+    .col-heading-text.avoid { color: var(--red); }
+
+    .col-heading-rule { flex: 1; height: 1px; }
+    .col-heading-rule.do    { background: var(--forest); opacity: .2; }
+    .col-heading-rule.avoid { background: var(--red); opacity: .2; }
+
+    .item-list { display: flex; flex-direction: column; gap: 7px; }
+
+    .item {
+      display: flex; align-items: flex-start; gap: 6px;
+      font-size: 9px; color: var(--slate); line-height: 1.5;
+    }
+
+    .item-dot { flex-shrink: 0; margin-top: 2px; font-size: 6px; }
+    .col.do   .item-dot { color: var(--forest); }
+    .col.avoid .item-dot { color: var(--red); }
+
+
+    /* ════════════════════════════════
+       BACK — GREEN version
+    ════════════════════════════════ */
+
+    .back-green {
+      background: var(--forest);
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+
+    .back-inner {
+      height: 100%; display: flex;
+      align-items: center; justify-content: center;
+      gap: 56px; padding: 28px 56px;
+    }
+
+    /* Monogram block — shared */
+    .monogram-lg {
+      border: 2px solid var(--gold); padding: 12px 16px;
+      display: inline-flex; flex-direction: column; align-items: center;
+      flex-shrink: 0;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+
+    .mono-letter-lg {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 32px; font-weight: 400; line-height: 0.85;
+    }
+
+    .back-green  .mono-letter-lg { color: var(--ivory); }
+    .back-cream  .mono-letter-lg { color: var(--forest); }
+
+    .mono-rule-lg { display: flex; align-items: center; gap: 5px; margin: 6px 0; }
+    .mono-line-lg { display: inline-block; width: 15px; height: 1px; background: var(--gold); }
+    .mono-diamond-lg { color: var(--gold); font-size: 9px; }
+
+    /* Text block — shared */
+    .back-text { display: flex; flex-direction: column; }
+
+    .back-brand-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px; font-weight: 400; letter-spacing: 5px;
+      text-transform: uppercase; line-height: 1; margin-bottom: 4px;
+    }
+
+    .back-green .back-brand-name { color: var(--ivory); }
+    .back-cream .back-brand-name { color: var(--forest); }
+
+    .back-brand-sub {
+      font-size: 7px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+
+    .back-rule {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+
+    .back-rule-line { flex: 1; height: 1px; }
+    .back-green .back-rule-line { background: rgba(196,150,63,.4); }
+    .back-cream .back-rule-line { background: rgba(44,74,62,.2); }
+
+    .back-rule-diamond { color: var(--gold); font-size: 8px; }
+
+    .back-tagline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 13px; font-weight: 300; font-style: italic;
+      line-height: 1.6; margin-bottom: 16px;
+    }
+
+    .back-green .back-tagline { color: rgba(250,249,246,.65); }
+    .back-cream .back-tagline { color: var(--slate); }
+
+    .back-contact { display: flex; align-items: center; margin-bottom: 6px; }
+
+    .back-contact-item { font-size: 9.5px; padding: 0 10px; }
+    .back-contact-item:first-child { padding-left: 0; }
+    .back-contact-item a { text-decoration: none; }
+
+    .back-green .back-contact-item,
+    .back-green .back-contact-item a { color: rgba(250,249,246,.75); }
+
+    .back-cream .back-contact-item,
+    .back-cream .back-contact-item a { color: var(--slate); }
+
+    .back-divider { font-size: 7px; color: var(--gold); }
+
+    .back-address { font-size: 8px; letter-spacing: .4px; line-height: 1.7; margin-bottom: 10px; }
+    .back-green .back-address { color: rgba(250,249,246,.4); }
+    .back-cream .back-address { color: #a0a8a4; }
+
+    .back-instagram { font-size: 9px; letter-spacing: 2px; color: var(--gold); }
+
+
+    /* ════════════════════════════════
+       BACK — CREAM version
+    ════════════════════════════════ */
+
+    .back-cream {
+      background: var(--ivory);
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+
+    .back-cream .gold-strip-bottom {
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), #D0BB76, var(--gold));
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+
+    /* ════════════════════════════════
+       Print — choose ONE back to print
+    ════════════════════════════════ */
+    @media print {
+      body { background: none; padding: 0; margin: 0; }
+      .controls, .card-label { display: none !important; }
+      .card-wrap { margin: 0; page-break-after: always; }
+      .card-wrap:last-child { page-break-after: avoid; }
+      /* Hide the back option you DON'T want — uncomment one: */
+      /* .hide-for-print { display: none !important; } */
+      .card { width: 100%; height: 100vh; box-shadow: none; margin: 0; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      @page { size: 6in 4in landscape; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="controls">
+    <button class="print-btn" onclick="window.print()">Print</button>
+    <span class="note">4×6 landscape · Margins: None · Background graphics: On</span>
+  </div>
+
+
+  <!-- ══ FRONT ══════════════════════════════════════ -->
+  <div class="card-wrap">
+    <p class="card-label">Front</p>
+    <div class="card front">
+
+      <div class="top-bar">
+        <div class="top-bar-brand">
+          <div class="monogram-xs">
+            <span class="mono-letter-xs">E</span>
+            <div class="mono-rule-xs">
+              <span class="mono-line-xs"></span><span class="mono-diamond-xs">&#9671;</span><span class="mono-line-xs"></span>
+            </div>
+            <span class="mono-letter-xs">O</span>
+          </div>
+          <span class="top-bar-name">Emerald &amp; Opal</span>
+        </div>
+        <span class="top-bar-right">Piercing Studio &nbsp;·&nbsp; Portland, OR</span>
+      </div>
+
+      <div class="gold-strip"></div>
+
+      <div class="content">
+
+        <div class="title-panel">
+          <span class="eyebrow">After Your Appointment</span>
+          <h1>Piercing<br>Aftercare</h1>
+          <p>Follow these simple steps and your piercing will heal beautifully.</p>
+        </div>
+
+        <div class="cols">
+          <div class="col do">
+            <div class="col-heading">
+              <span class="col-heading-text do">◇ &nbsp;Do This</span>
+              <span class="col-heading-rule do"></span>
+            </div>
+            <div class="item-list">
+              <div class="item"><span class="item-dot">◇</span>Rinse with sterile saline wound wash twice daily</div>
+              <div class="item"><span class="item-dot">◇</span>Let the piercing fully air dry after cleaning</div>
+              <div class="item"><span class="item-dot">◇</span>Sleep on a clean pillowcase — silk is ideal</div>
+              <div class="item"><span class="item-dot">◇</span>Keep hair products, perfume &amp; makeup away</div>
+              <div class="item"><span class="item-dot">◇</span>Contact us if anything seems off</div>
+            </div>
+          </div>
+
+          <div class="col avoid">
+            <div class="col-heading">
+              <span class="col-heading-text avoid">✗ &nbsp;Avoid</span>
+              <span class="col-heading-rule avoid"></span>
+            </div>
+            <div class="item-list">
+              <div class="item"><span class="item-dot">◇</span>Touching with unwashed hands</div>
+              <div class="item"><span class="item-dot">◇</span>Rotating or twisting the jewelry</div>
+              <div class="item"><span class="item-dot">◇</span>Alcohol, peroxide, or tea tree oil</div>
+              <div class="item"><span class="item-dot">◇</span>Pools, hot tubs &amp; open water for at least 8 weeks</div>
+              <div class="item"><span class="item-dot">◇</span>Changing jewelry before fully healed</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card-footer">
+        <p>Full healing takes 6–9 months — even when it feels fine sooner.</p>
+        <span>Questions? We're here.</span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══ BACK — FOREST GREEN ═══════════════════════ -->
+  <div class="card-wrap">
+    <p class="card-label">Back — Option A: Forest Green (recommended)</p>
+    <div class="card back-green">
+      <div class="back-inner">
+
+        <div class="monogram-lg">
+          <span class="mono-letter-lg">E</span>
+          <div class="mono-rule-lg"><span class="mono-line-lg"></span><span class="mono-diamond-lg">&#9671;</span><span class="mono-line-lg"></span></div>
+          <span class="mono-letter-lg">O</span>
+        </div>
+
+        <div class="back-text">
+          <div class="back-brand-name">Emerald &amp; Opal</div>
+          <div class="back-brand-sub">Piercing Studio</div>
+          <div class="back-rule"><span class="back-rule-line"></span><span class="back-rule-diamond">&#9671;</span><span class="back-rule-line"></span></div>
+          <div class="back-tagline">"Every ear tells a story.<br>We're here to help you write yours."</div>
+          <div class="back-contact">
+            <span class="back-contact-item"><a href="tel:5032174065">503-217-4065</a></span>
+            <span class="back-divider">◇</span>
+            <span class="back-contact-item"><a href="mailto:info@emeraldandopalpiercing.com">info@emeraldandopalpiercing.com</a></span>
+          </div>
+          <div class="back-address">Inside Muse Hair Design &nbsp;·&nbsp; 910 NW 23rd Ave, Portland OR 97210</div>
+          <div class="back-instagram">@emeraldandopalpiercing</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ BACK — CREAM ═══════════════════════════════ -->
+  <div class="card-wrap">
+    <p class="card-label">Back — Option B: Cream</p>
+    <div class="card back-cream">
+
+      <div class="top-bar">
+        <div class="top-bar-brand">
+          <div class="monogram-xs">
+            <span class="mono-letter-xs">E</span>
+            <div class="mono-rule-xs">
+              <span class="mono-line-xs"></span><span class="mono-diamond-xs">&#9671;</span><span class="mono-line-xs"></span>
+            </div>
+            <span class="mono-letter-xs">O</span>
+          </div>
+          <span class="top-bar-name">Emerald &amp; Opal</span>
+        </div>
+        <span class="top-bar-right">Piercing Studio &nbsp;·&nbsp; Portland, OR</span>
+      </div>
+
+      <div class="gold-strip"></div>
+
+      <div class="back-inner" style="flex-direction:column; gap:0; padding:24px 56px; text-align:center;">
+
+        <div class="monogram-lg" style="border-color:var(--gold); margin-bottom:14px;">
+          <span class="mono-letter-lg">E</span>
+          <div class="mono-rule-lg"><span class="mono-line-lg"></span><span class="mono-diamond-lg">&#9671;</span><span class="mono-line-lg"></span></div>
+          <span class="mono-letter-lg">O</span>
+        </div>
+
+        <div class="back-brand-name" style="margin-bottom:4px;">Emerald &amp; Opal</div>
+        <div class="back-brand-sub">Piercing Studio</div>
+        <div class="back-rule" style="max-width:2.8in; margin:0 auto 12px;"><span class="back-rule-line"></span><span class="back-rule-diamond">&#9671;</span><span class="back-rule-line"></span></div>
+        <div class="back-tagline" style="margin-bottom:14px;">"Every ear tells a story.<br>We're here to help you write yours."</div>
+        <div class="back-contact" style="justify-content:center; margin-bottom:6px;">
+          <span class="back-contact-item"><a href="tel:5032174065">503-217-4065</a></span>
+          <span class="back-divider">◇</span>
+          <span class="back-contact-item"><a href="mailto:info@emeraldandopalpiercing.com">info@emeraldandopalpiercing.com</a></span>
+        </div>
+        <div class="back-address" style="text-align:center;">Inside Muse Hair Design &nbsp;·&nbsp; 910 NW 23rd Ave, Portland OR 97210</div>
+        <div class="back-instagram">@emeraldandopalpiercing</div>
+
+      </div>
+
+      <div class="gold-strip"></div>
+
+    </div>
+  </div>
+
+</body>
+</html>

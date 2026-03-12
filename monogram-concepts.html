@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E&O Monogram Concepts — Emerald & Opal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #FAF9F6; font-family: Arial, sans-serif; padding: 50px 30px; }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: #2C4A3E; text-align: center; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px; }
+    .sub { text-align: center; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7a8a85; margin-bottom: 50px; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 900px; margin: 0 auto; }
+    .card { background: white; border: 1px solid #e8e4dd; padding: 40px 30px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+    .card-dark { background: #2C4A3E; border-color: #2C4A3E; }
+    .label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #7a8a85; text-align: center; }
+    .label-light { color: rgba(250,249,246,0.5); }
+    .swatch-row { display: flex; gap: 20px; align-items: center; }
+    .swatch { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .swatch span { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #999; }
+    .divider { width: 100%; height: 1px; background: #e8e4dd; margin: 10px 0; }
+
+    /* ── Concept 1: Circle Monogram ── */
+    .mono-1 {
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      border: 1.5px solid #2C4A3E;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative;
+    }
+    .mono-1 .letters {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      font-weight: 300;
+      color: #2C4A3E;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+    .mono-1 .amp {
+      font-size: 18px;
+      color: #BEA55A;
+      vertical-align: middle;
+      margin: 0 2px;
+    }
+    .mono-1 .tagline {
+      font-size: 6.5px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7a8a85;
+      margin-top: 5px;
+    }
+    .mono-1-gold {
+      border-color: #BEA55A;
+    }
+    .mono-1-gold .letters { color: #BEA55A; }
+    .mono-1-gold .amp { color: #2C4A3E; }
+
+    /* ── Concept 2: Diamond Frame ── */
+    .mono-2-wrap {
+      width: 140px; height: 140px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .mono-2-diamond {
+      width: 110px; height: 110px;
+      border: 1.5px solid #BEA55A;
+      transform: rotate(45deg);
+      position: absolute;
+    }
+    .mono-2-inner {
+      position: relative;
+      z-index: 1;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .mono-2-inner .letters {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: #2C4A3E;
+      letter-spacing: 3px;
+      line-height: 1;
+    }
+    .mono-2-inner .amp {
+      font-size: 14px;
+      color: #BEA55A;
+      margin: 0 1px;
+    }
+
+    /* ── Concept 3: E◇O Linear ── */
+    .mono-3 {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 18px 28px;
+      border-top: 1px solid #2C4A3E;
+      border-bottom: 1px solid #2C4A3E;
+    }
+    .mono-3 .letters {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px;
+      font-weight: 300;
+      color: #2C4A3E;
+      letter-spacing: 6px;
+      line-height: 1;
+    }
+    .mono-3 .diamond-accent {
+      color: #BEA55A;
+      font-size: 20px;
+      margin: 0 4px;
+      vertical-align: middle;
+    }
+    .mono-3 .sub-text {
+      font-size: 7px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #7a8a85;
+      margin-top: 7px;
+    }
+
+    /* ── Concept 4: Stacked Monogram ── */
+    .mono-4 {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0;
+    }
+    .mono-4 .e-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 300;
+      color: #2C4A3E;
+      line-height: 0.85;
+    }
+    .mono-4 .rule-wrap {
+      display: flex; align-items: center; gap: 6px; margin: 4px 0;
+    }
+    .mono-4 .rule { width: 20px; height: 1px; background: #BEA55A; }
+    .mono-4 .diamond-sm { color: #BEA55A; font-size: 10px; }
+    .mono-4 .o-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 300;
+      color: #2C4A3E;
+      line-height: 0.85;
+    }
+
+    /* Dark background versions */
+    .on-dark .mono-1 { border-color: #BEA55A; }
+    .on-dark .mono-1 .letters { color: #FAF9F6; }
+    .on-dark .mono-1 .amp { color: #BEA55A; }
+    .on-dark .mono-1 .tagline { color: rgba(250,249,246,0.4); }
+
+    .on-dark .mono-2-diamond { border-color: #BEA55A; }
+    .on-dark .mono-2-inner .letters { color: #FAF9F6; }
+    .on-dark .mono-2-inner .amp { color: #BEA55A; }
+
+    .on-dark .mono-3 { border-color: rgba(250,249,246,0.3); }
+    .on-dark .mono-3 .letters { color: #FAF9F6; }
+    .on-dark .mono-3 .sub-text { color: rgba(250,249,246,0.4); }
+
+    .on-dark .mono-4 .e-letter,
+    .on-dark .mono-4 .o-letter { color: #FAF9F6; }
+    .on-dark .label { color: rgba(250,249,246,0.45); }
+
+    /* Size reference row */
+    .size-row { display: flex; gap: 30px; align-items: flex-end; }
+    .size-demo { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .size-demo span { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #999; }
+  </style>
+</head>
+<body>
+
+  <h1>E &amp; O Monogram Concepts</h1>
+  <div class="sub">Emerald &amp; Opal Piercing Studio — Four directions to explore</div>
+
+  <div class="grid">
+
+    <!-- ── Concept 1: Circle ── -->
+    <div class="card">
+      <div class="label">Concept 1 — Classic Circle</div>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="mono-1">
+            <div class="letters">E<span class="amp">&amp;</span>O</div>
+            <div class="tagline">Piercing Studio</div>
+          </div>
+          <span>Forest</span>
+        </div>
+        <div class="swatch">
+          <div class="mono-1 mono-1-gold">
+            <div class="letters">E<span class="amp">&amp;</span>O</div>
+            <div class="tagline">Piercing Studio</div>
+          </div>
+          <span>Gold</span>
+        </div>
+      </div>
+      <div class="label" style="font-size:9px;color:#aaa;max-width:220px;text-align:center;line-height:1.6;">
+        Traditional, universally recognised. Works on packaging, stickers, stamps.
+      </div>
+    </div>
+
+    <!-- ── Concept 2: Diamond Frame ── -->
+    <div class="card">
+      <div class="label">Concept 2 — Diamond Frame</div>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="mono-2-wrap">
+            <div class="mono-2-diamond"></div>
+            <div class="mono-2-inner">
+              <div class="letters">E<span class="amp">&amp;</span>O</div>
+            </div>
+          </div>
+          <span>Light BG</span>
+        </div>
+      </div>
+      <div class="label" style="font-size:9px;color:#aaa;max-width:220px;text-align:center;line-height:1.6;">
+        Uses your existing ◇ brand element as a frame. Feels jewellery-forward and distinctive.
+      </div>
+    </div>
+
+    <!-- ── Concept 3: E◇O Linear ── -->
+    <div class="card">
+      <div class="label">Concept 3 — E ◇ O Linear</div>
+      <div class="mono-3">
+        <div class="letters">E<span class="diamond-accent">◇</span>O</div>
+        <div class="sub-text">Piercing Studio &nbsp;·&nbsp; Portland</div>
+      </div>
+      <div class="label" style="font-size:9px;color:#aaa;max-width:220px;text-align:center;line-height:1.6;">
+        Diamond replaces the &amp; — modern, minimal, instantly recognisable. Great for social media profile pics and watermarks.
+      </div>
+    </div>
+
+    <!-- ── Concept 4: Stacked ── -->
+    <div class="card">
+      <div class="label">Concept 4 — Stacked</div>
+      <div class="mono-4">
+        <div class="e-letter">E</div>
+        <div class="rule-wrap">
+          <div class="rule"></div>
+          <div class="diamond-sm">◇</div>
+          <div class="rule"></div>
+        </div>
+        <div class="o-letter">O</div>
+      </div>
+      <div class="label" style="font-size:9px;color:#aaa;max-width:220px;text-align:center;line-height:1.6;">
+        Bold and sculptural. Best for large-format use — hang tags, tissue paper, embossing, social headers.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Dark background preview -->
+  <div style="max-width:900px;margin:40px auto 0;">
+    <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#7a8a85;text-align:center;margin-bottom:20px;">How they look on dark backgrounds</div>
+    <div style="background:#2C4A3E;padding:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:center;justify-items:center;" class="on-dark">
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="mono-1">
+          <div class="letters">E<span class="amp">&amp;</span>O</div>
+          <div class="tagline">Piercing Studio</div>
+        </div>
+        <div class="label">Circle</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="mono-2-wrap">
+          <div class="mono-2-diamond"></div>
+          <div class="mono-2-inner">
+            <div class="letters">E<span class="amp">&amp;</span>O</div>
+          </div>
+        </div>
+        <div class="label">Diamond</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="mono-3">
+          <div class="letters">E<span class="diamond-accent">◇</span>O</div>
+          <div class="sub-text">Piercing Studio</div>
+        </div>
+        <div class="label">Linear</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="mono-4">
+          <div class="e-letter">E</div>
+          <div class="rule-wrap">
+            <div class="rule"></div>
+            <div class="diamond-sm">◇</div>
+            <div class="rule"></div>
+          </div>
+          <div class="o-letter">O</div>
+        </div>
+        <div class="label">Stacked</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Size reference -->
+  <div style="max-width:900px;margin:40px auto 0;background:white;border:1px solid #e8e4dd;padding:30px;">
+    <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#7a8a85;text-align:center;margin-bottom:24px;">Concept 3 (Linear) at real-world sizes</div>
+    <div style="display:flex;gap:40px;align-items:flex-end;justify-content:center;flex-wrap:wrap;">
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:300;color:#2C4A3E;letter-spacing:3px;">E<span style="color:#BEA55A;font-size:7px;margin:0 2px;">◇</span>O</div>
+        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#bbb;">Favicon</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:#2C4A3E;letter-spacing:4px;">E<span style="color:#BEA55A;font-size:13px;margin:0 3px;">◇</span>O</div>
+        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#bbb;">Business Card</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:#2C4A3E;letter-spacing:6px;">E<span style="color:#BEA55A;font-size:22px;margin:0 4px;">◇</span>O</div>
+        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#bbb;">Social / Print</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:#2C4A3E;letter-spacing:8px;">E<span style="color:#BEA55A;font-size:40px;margin:0 6px;">◇</span>O</div>
+        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#bbb;">Signage / Banner</span>
+      </div>
+
+    </div>
+  </div>
+
+  <p style="text-align:center;font-size:11px;color:#bbb;margin-top:30px;">Emerald &amp; Opal Piercing Studio — Monogram Concepts</p>
+
+</body>
+</html>

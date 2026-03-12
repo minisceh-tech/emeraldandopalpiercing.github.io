@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.emeraldandopalpiercing.com)",
+      "WebFetch(domain:www.rowanpiercing.com)",
+      "WebFetch(domain:heyrowan.com)",
+      "WebFetch(domain:www.safepierce.com)",
+      "WebSearch",
+      "WebFetch(domain:www.invernesspiercing.co.uk)",
+      "Bash(__NEW_LINE_231382025e35a1ab__ echo:*)",
+      "Bash(node:*)",
+      "Bash(__NEW_LINE_23c42ffb4693c997__ echo:*)",
+      "Bash(done)",
+      "Bash(do sed:*)",
+      "Bash(xargs sed:*)"
+    ]
+  }
+}

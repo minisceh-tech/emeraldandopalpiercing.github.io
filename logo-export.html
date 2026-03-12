@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logo Export — Emerald & Opal Piercing Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f0ede6;
+      font-family: Arial, sans-serif;
+      padding: 40px 30px;
+      min-height: 100vh;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: #2C4A3E;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .instructions {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      background: #2C4A3E;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 4px;
+      font-size: 13px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .designs-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 60px;
+      flex-wrap: wrap;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .design-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .design-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7a8a85;
+      text-align: center;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 10px 28px;
+      background: #BEA55A;
+      color: white;
+      border: none;
+      border-radius: 2px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      transition: background 0.2s ease;
+    }
+
+    .download-btn:hover {
+      background: #9A8848;
+    }
+
+    /* ── Design 1: Wordmark ── */
+    #wordmark-design {
+      background: #FAF9F6;
+      padding: 60px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 900px;
+      min-height: 220px;
+      justify-content: center;
+    }
+
+    .wordmark-name {
+      font-family: 'Ibarra Real Nova', Georgia, serif;
+      font-weight: 600;
+      font-size: 48px;
+      letter-spacing: 8px;
+      color: #2C4A3E;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .wordmark-rule {
+      width: 120px;
+      height: 1.5px;
+      background: #BEA55A;
+      margin: 12px auto;
+    }
+
+    .wordmark-sub {
+      font-family: 'Ibarra Real Nova', Georgia, serif;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 6px;
+      color: #7a8a85;
+      text-transform: uppercase;
+    }
+
+    /* ── Design 2: Monogram ── */
+    #monogram-design {
+      background: #FAF9F6;
+      padding: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 300px;
+      min-height: 350px;
+    }
+
+    .monogram-box {
+      border: 2px solid #BEA55A;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 30px;
+    }
+
+    .monogram-letter {
+      font-family: 'Ibarra Real Nova', Georgia, serif;
+      font-weight: 600;
+      font-size: 90px;
+      color: #2C4A3E;
+      line-height: 0.85;
+    }
+
+    .monogram-divider-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 8px 0;
+    }
+
+    .monogram-line {
+      width: 22px;
+      height: 1px;
+      background: #BEA55A;
+    }
+
+    .monogram-diamond {
+      font-size: 16px;
+      color: #BEA55A;
+      line-height: 1;
+      padding: 0 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <p class="page-title">Logo Export</p>
+
+  <div class="instructions">
+    Click <strong>Download PNG</strong> under each design to save the file.
+    PNG is higher quality than JPG and works for all print and digital uses.
+  </div>
+
+  <div class="designs-row">
+
+    <!-- DESIGN 1: WORDMARK -->
+    <div class="design-col">
+      <p class="design-label">Design 1 — Wordmark</p>
+
+      <div id="wordmark-design">
+        <div class="wordmark-name">Emerald &amp; Opal</div>
+        <div class="wordmark-rule"></div>
+        <div class="wordmark-sub">Piercing Studio</div>
+      </div>
+
+      <div style="display:flex;gap:10px;">
+        <button class="download-btn" onclick="downloadDesign('wordmark-design', 'emerald-opal-wordmark.png', 'png')">
+          Download PNG
+        </button>
+        <button class="download-btn" onclick="downloadDesign('wordmark-design', 'emerald-opal-wordmark.jpg', 'jpeg')">
+          Download JPG
+        </button>
+      </div>
+    </div>
+
+    <!-- DESIGN 2: MONOGRAM -->
+    <div class="design-col">
+      <p class="design-label">Design 2 — Monogram</p>
+
+      <div id="monogram-design">
+        <div class="monogram-box">
+          <div class="monogram-letter">E</div>
+          <div class="monogram-divider-row">
+            <div class="monogram-line"></div>
+            <span class="monogram-diamond">&#9671;</span>
+            <div class="monogram-line"></div>
+          </div>
+          <div class="monogram-letter">O</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;">
+        <button class="download-btn" onclick="downloadDesign('monogram-design', 'emerald-opal-monogram.png', 'png')">
+          Download PNG
+        </button>
+        <button class="download-btn" onclick="downloadDesign('monogram-design', 'emerald-opal-monogram.jpg', 'jpeg')">
+          Download JPG
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function downloadDesign(elementId, filename, format) {
+      const el = document.getElementById(elementId);
+      const mimeType = format === 'jpeg' ? 'image/jpeg' : 'image/png';
+      const quality = format === 'jpeg' ? 0.95 : undefined;
+      html2canvas(el, { scale: 3, backgroundColor: '#FAF9F6', useCORS: true }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = quality ? canvas.toDataURL(mimeType, quality) : canvas.toDataURL(mimeType);
+        link.click();
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Emerald &amp; Opal Piercing Studio</title>
+  <meta name="description" content="Browse the portfolio of Emerald & Opal Piercing Studio — curated ear stacks, cartilage piercings, and bespoke ear styling in NW Portland.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    /* Larger gallery grid for the gallery page */
+    .gallery-grid--full {
+      grid-template-columns: repeat(4, 1fr);
+      gap: .4rem;
+    }
+    .gallery-grid--full .gallery-item--tall {
+      grid-row: span 2;
+    }
+    @media (max-width: 1024px) { .gallery-grid--full { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 768px)  { .gallery-grid--full { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 480px)  { .gallery-grid--full { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────────── -->
+  <nav class="nav nav--solid" id="main-nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-name">Emerald &amp; Opal</span>
+        <span class="nav__logo-sub">Piercing Studio</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html"    class="nav__link">Home</a></li>
+        <li><a href="about.html"    class="nav__link">About</a></li>
+        <li><a href="services.html" class="nav__link">Services</a></li>
+        <li><a href="gallery.html"  class="nav__link active">Gallery</a></li>
+        <li><a href="faq.html"      class="nav__link">FAQ</a></li>
+        <li><a href="contact.html"  class="nav__link">Contact</a></li>
+      </ul>
+      <a href="contact.html#book" class="btn btn-gold nav__cta">Book Now</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <ul class="nav__mobile" id="mobile-nav">
+    <li><a href="index.html"    class="nav__link">Home</a></li>
+    <li><a href="about.html"    class="nav__link">About</a></li>
+    <li><a href="services.html" class="nav__link">Services</a></li>
+    <li><a href="gallery.html"  class="nav__link">Gallery</a></li>
+    <li><a href="faq.html"      class="nav__link">FAQ</a></li>
+    <li><a href="contact.html"  class="nav__link">Contact</a></li>
+    <li style="margin-top:.5rem;"><a href="contact.html#book" class="btn btn-primary">Book Now</a></li>
+  </ul>
+
+  <!-- ── Page Header ─────────────────────────────────────────── -->
+  <div class="page-header">
+    <span class="label">Portfolio</span>
+    <h1>The Gallery</h1>
+    <p>Every ear is a canvas. Browse our work and find inspiration for your own curation.</p>
+  </div>
+
+  <!-- ── Gallery Grid ──────────────────────────────────────────  -->
+  <section class="section" style="padding-top:3rem;">
+    <div class="container">
+
+      <!--
+        ★ HOW TO ADD YOUR PHOTOS:
+
+        Replace each placeholder div below with:
+
+        <div class="gallery-item">
+          <img src="images/gallery-1.jpg" alt="Curated ear stack by Emerald & Opal">
+          <div class="gallery-item__overlay"><span>Curated Stack</span></div>
+        </div>
+
+        Add "gallery-item--tall" to a class to make it span two rows (good for portrait photos):
+        <div class="gallery-item gallery-item--tall">
+
+        Save your photos in the /images/ folder.
+        Recommended size: at least 800x800px, square crops work best.
+        Name them clearly: gallery-1.jpg, gallery-2.jpg, etc.
+      -->
+
+      <div class="gallery-grid gallery-grid--full">
+        <div class="gallery-item"><img src="images/gallery-1.jpg" alt="Constellation ear piercing by Emerald &amp; Opal"><div class="gallery-item__overlay"><span>Constellation</span></div></div>
+        <div class="gallery-item"><img src="images/gallery-2.jpg" alt="Double piercing by Emerald &amp; Opal"><div class="gallery-item__overlay"><span>Seconds</span></div></div>
+        <div class="gallery-item"><img src="images/gallery-3.jpg" alt="Children's first piercing by Emerald &amp; Opal"><div class="gallery-item__overlay"><span>Baby's First</span></div></div>
+        <div class="gallery-item"><img src="images/gallery-4.jpg" alt="First piercing by Emerald &amp; Opal"><div class="gallery-item__overlay"><span>First Piercing</span></div></div>
+        <div class="gallery-item"><img src="images/gallery-5.jpg" alt="Triple lobe piercing by Emerald &amp; Opal"><div class="gallery-item__overlay"><span>Triple Lobe</span></div></div>
+        <div class="gallery-item"><img src="images/gallery-7.jpg" alt="Seconds and thirds by Emerald &amp; Opal"><div class="gallery-item__overlay"><span>Seconds & Thirds</span></div></div>
+        <div class="gallery-item"><img src="images/gallery-6.jpg" alt="Children's piercing by Emerald &amp; Opal"><div class="gallery-item__overlay"><span>Children's Piercing</span></div></div>
+        <div class="gallery-item"><img src="images/gallery-8.jpg" alt="Titanium ball and hoop thirds by Emerald &amp; Opal"><div class="gallery-item__overlay"><span>Titanium Ball & Hoop</span></div></div>
+        <div class="gallery-item"><img src="images/gallery-9.jpg" alt="Third lobe piercing by Emerald &amp; Opal"><div class="gallery-item__overlay"><span>Thirds</span></div></div>
+        <div class="gallery-item"><img src="images/gallery-10.jpg" alt="Statement studs by Emerald &amp; Opal"><div class="gallery-item__overlay"><span>Statement Studs</span></div></div>
+        <div class="gallery-item"><img src="images/gallery-11.jpg" alt="Full ear curation by Emerald &amp; Opal"><div class="gallery-item__overlay"><span>Emerald Thirds</span></div></div>
+        <div class="gallery-item"><img src="images/gallery-12.jpg" alt="Gold and diamond earrings by Emerald &amp; Opal"><div class="gallery-item__overlay"><span>Gold & Diamonds</span></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Instagram CTA ─────────────────────────────────────────── -->
+  <section class="section section--cream" style="padding:4rem 0;text-align:center;">
+    <div class="container">
+      <span class="label">See More</span>
+      <p style="font-family:var(--font-serif);font-size:1.6rem;color:var(--forest);font-style:italic;margin:.75rem 0;">@emeraldandopalpiercing</p>
+      <p style="margin-bottom:2rem;">Follow us on Instagram for new work, jewelry drops, and behind-the-scenes content.</p>
+      <a href="https://www.instagram.com/emeraldandopalpiercing" target="_blank" rel="noopener" class="btn btn-outline">Follow on Instagram</a>
+    </div>
+  </section>
+
+  <!-- ── CTA ──────────────────────────────────────────────────── -->
+  <section class="section section--forest" style="text-align:center;">
+    <div class="container" style="max-width:580px;">
+      <span class="label" style="color:var(--gold-light);">Love What You See?</span>
+      <h2 style="color:var(--ivory);margin:1rem 0 1.25rem;">Let's Build Your<br><em>Dream Ear</em></h2>
+      <p style="margin-bottom:2.5rem;">Book an appointment and bring your inspiration. We'll make it happen.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html#book" class="btn btn-gold">Book Now</a>
+        <a href="services.html"     class="btn btn-light">View Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <div style="display:inline-flex;flex-direction:column;align-items:center;border:1px solid #BEA55A;padding:8px 10px;margin-bottom:14px;">
+          <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:400;color:#FAF9F6;line-height:0.85;">E</span>
+          <span style="display:flex;align-items:center;gap:4px;margin:4px 0;">
+            <span style="display:inline-block;width:10px;height:1px;background:#BEA55A;"></span>
+            <span style="color:#BEA55A;font-size:7px;font-family:Arial,sans-serif;">◇</span>
+            <span style="display:inline-block;width:10px;height:1px;background:#BEA55A;"></span>
+          </span>
+          <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:400;color:#FAF9F6;line-height:0.85;">O</span>
+        </div>
+          <div class="footer__brand-name">Emerald &amp; Opal</div>
+          <span class="footer__brand-sub">Piercing Studio</span>
+          <p class="footer__desc">Portland's boutique ear piercing studio. Every placement is personal, every ear is art.</p>
+          <div class="footer__social">
+            <a href="https://www.instagram.com/emeraldandopalpiercing" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Pinterest">PT</a>
+            <a href="#" aria-label="TikTok">TK</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Navigate</div>
+          <ul class="footer__links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services &amp; Pricing</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Services</div>
+          <ul class="footer__links">
+            <li><a href="services.html#lobe">Lobe Piercings</a></li>
+            <li><a href="services.html#children">Children's Piercings</a></li>
+            <li><a href="services.html#curated">Curated Ear Styling</a></li>
+            <li><a href="services.html#events">Piercing Parties</a></li>
+            <li><a href="contact.html#book">Book Now</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Visit Us</div>
+          <div class="footer__info">
+            <p>Inside Muse Hair Design<br>NW 23rd Avenue<br>Portland, OR</p>
+            <p>By appointment only</p>
+            <a href="tel:5032174065">503-217-4065</a>
+            <a href="mailto:info@emeraldandopalpiercing.com">info@emeraldandopalpiercing.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Emerald &amp; Opal Piercing Studio. All rights reserved.</p>
+        <p class="footer__copy">Designed with love in Portland, OR</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

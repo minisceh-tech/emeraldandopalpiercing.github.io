@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ 5×7 Display — Emerald &amp; Opal Piercing Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest: #2C4A3E;
+      --gold:   #BEA55A;
+      --ivory:  #FAF9F6;
+      --cream:  #F0EDE6;
+      --slate:  #5C6B63;
+      --border: #DDD9D0;
+    }
+
+    body {
+      background: #e8e4dc;
+      font-family: 'DM Sans', Arial, sans-serif;
+      padding: 40px 20px;
+    }
+
+    .print-btn {
+      display: block;
+      width: fit-content;
+      margin: 0 auto 24px;
+      padding: 10px 28px;
+      background: var(--forest);
+      color: white;
+      border: none;
+      border-radius: 2px;
+      font-family: 'DM Sans', Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .print-btn:hover { background: #1e3329; }
+
+    /* ── Card ── */
+    .card {
+      width: 5in;
+      height: 7in;
+      margin: 0 auto;
+      background: var(--ivory);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 32px rgba(0,0,0,.2);
+      overflow: hidden;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: var(--forest);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      padding: 18px 26px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .monogram {
+      border: 1px solid var(--gold);
+      padding: 5px 7px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .mono-letter {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ivory);
+      line-height: 0.85;
+    }
+
+    .mono-rule {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      margin: 3px 0;
+    }
+
+    .mono-line {
+      display: inline-block;
+      width: 7px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .mono-diamond {
+      color: var(--gold);
+      font-size: 5px;
+      font-family: Arial, sans-serif;
+    }
+
+    .header-brand { display: flex; flex-direction: column; }
+
+    .brand-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ivory);
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-size: 6.5px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 4px;
+    }
+
+    .header-title {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .header-title-label {
+      font-size: 6px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .header-title h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 19px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ivory);
+      line-height: 1.05;
+    }
+
+    /* ── Gold rule ── */
+    .gold-rule {
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), #D0BB76, var(--gold));
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      flex-shrink: 0;
+    }
+
+    /* ── Body ── */
+    .body {
+      padding: 20px 26px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      flex: 1;
+    }
+
+    .faq-item {
+      padding: 13px 14px 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:nth-child(odd) {
+      padding-right: 18px;
+      border-right: 1px solid var(--border);
+    }
+
+    .faq-item:nth-child(even) {
+      padding-left: 18px;
+      padding-right: 0;
+    }
+
+    /* Remove bottom border on last row (items 5 & 6) */
+    .faq-item:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+
+    .faq-diamond {
+      font-size: 7px;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .faq-q {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--forest);
+      line-height: 1.2;
+      margin-bottom: 5px;
+    }
+
+    .faq-a {
+      font-size: 9.5px;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    .faq-a strong {
+      color: #3a3a3a;
+      font-weight: 500;
+    }
+
+    /* ── Footer ── */
+    .footer-bar {
+      background: var(--forest);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      padding: 11px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .footer-bar p, .footer-bar a {
+      font-size: 8px;
+      color: rgba(250,249,246,.7);
+      text-decoration: none;
+      letter-spacing: .4px;
+      line-height: 1.7;
+    }
+
+    .footer-bar a { color: var(--gold); }
+
+    .footer-right { text-align: right; }
+
+    /* ── Screen note ── */
+    .screen-note {
+      text-align: center;
+      font-size: 11px;
+      color: #888;
+      margin-top: 18px;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { background: none; padding: 0; margin: 0; }
+      .print-btn, .screen-note { display: none !important; }
+      .card { box-shadow: none; margin: 0; width: 5in; height: 7in; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      @page { size: 5in 7in; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+  <div class="card">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <div class="monogram">
+          <span class="mono-letter">E</span>
+          <div class="mono-rule">
+            <span class="mono-line"></span>
+            <span class="mono-diamond">&#9671;</span>
+            <span class="mono-line"></span>
+          </div>
+          <span class="mono-letter">O</span>
+        </div>
+        <div class="header-brand">
+          <span class="brand-name">Emerald &amp; Opal</span>
+          <span class="brand-sub">Piercing Studio</span>
+        </div>
+      </div>
+      <div class="header-title">
+        <span class="header-title-label">Good to Know</span>
+        <h1>Your Questions,<br>Answered</h1>
+      </div>
+    </div>
+
+    <div class="gold-rule"></div>
+
+    <!-- Body -->
+    <div class="body">
+      <div class="faq-grid">
+
+        <div class="faq-item">
+          <span class="faq-diamond">◇</span>
+          <div class="faq-q">Do I need an appointment?</div>
+          <div class="faq-a">Yes — we are a private, by-appointment-only studio. No walk-ins. Book online to see availability.</div>
+        </div>
+
+        <div class="faq-item">
+          <span class="faq-diamond">◇</span>
+          <div class="faq-q">Can I bring someone?</div>
+          <div class="faq-a">Yes! You're welcome to bring up to <strong>two</strong> support people. For bigger groups, ask about a piercing party.</div>
+        </div>
+
+        <div class="faq-item">
+          <span class="faq-diamond">◇</span>
+          <div class="faq-q">Can I bring my own jewelry?</div>
+          <div class="faq-a">We only pierce with jewelry from our own collection to ensure proper metal quality and sizing for a fresh piercing. Once fully healed, we're happy to swap to a piece of your own.</div>
+        </div>
+
+        <div class="faq-item">
+          <span class="faq-diamond">◇</span>
+          <div class="faq-q">Do you pierce children?</div>
+          <div class="faq-a">Yes, infants 6 months and older. DTaP vaccination proof required. Parent or guardian must be present for all minors.</div>
+        </div>
+
+        <div class="faq-item">
+          <span class="faq-diamond">◇</span>
+          <div class="faq-q">What jewelry do you use?</div>
+          <div class="faq-a">Implant-grade <strong>titanium</strong>, <strong>solid 14K gold</strong>, and <strong>medical-grade stainless steel</strong>. No mystery alloys, ever.</div>
+        </div>
+
+        <div class="faq-item">
+          <span class="faq-diamond">◇</span>
+          <div class="faq-q">How do I care for it?</div>
+          <div class="faq-a">Sterile saline spray <strong>1–2× daily</strong>. Don't touch, twist, or submerge. Full healing takes 6–9 months.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-bar">
+      <div>
+        <p>Inside Muse Hair Design &nbsp;·&nbsp; 910 NW 23rd Ave, Portland OR<br>
+        By appointment only &nbsp;·&nbsp; <a href="tel:5032174065">503-217-4065</a></p>
+      </div>
+      <div class="footer-right">
+        <a href="https://www.instagram.com/emeraldandopalpiercing">@emeraldandopalpiercing</a><br>
+        <a href="#">emeraldandopalpiercing.com</a>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="screen-note">Ctrl+P → set page size to <strong>5×7</strong> and margins to <strong>None</strong></p>
+
+</body>
+</html>
