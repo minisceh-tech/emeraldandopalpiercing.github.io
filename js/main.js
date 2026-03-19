@@ -110,6 +110,35 @@
   });
 })();
 
+/* ── Contact form: submit via fetch, redirect to thank you ──── */
+(function () {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const btn = form.querySelector('[type="submit"]');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function (res) {
+      if (res.ok) {
+        window.location.href = 'thankyou.html';
+      } else {
+        btn.textContent = 'Something went wrong — please try again.';
+        btn.disabled = false;
+      }
+    }).catch(function () {
+      btn.textContent = 'Something went wrong — please try again.';
+      btn.disabled = false;
+    });
+  });
+})();
+
 /* ── Vagaro popup trigger ───────────────────────────────────── */
 (function () {
   document.querySelectorAll('.vagaro-book-btn').forEach(function (btn) {
