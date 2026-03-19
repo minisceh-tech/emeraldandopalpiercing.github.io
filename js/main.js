@@ -95,6 +95,7 @@
   });
 })();
 
+
 /* ── Contact / Subscribe form (basic prevent + feedback) ─────── */
 (function () {
   document.querySelectorAll('form[data-form]').forEach(form => {
@@ -105,6 +106,17 @@
       btn.textContent = 'Sent! ✓';
       btn.disabled = true;
       setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 3500);
+    });
+  });
+})();
+
+/* ── Vagaro popup trigger ───────────────────────────────────── */
+(function () {
+  document.querySelectorAll('.vagaro-book-btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var vagaroBtn = document.querySelector('a.loader-btn-html');
+      if (vagaroBtn) vagaroBtn.click();
     });
   });
 })();

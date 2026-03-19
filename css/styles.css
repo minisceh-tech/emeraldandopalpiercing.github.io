@@ -361,3 +361,10 @@ p  { font-size: 1rem; line-height: 1.8; color: var(--slate); }
   .gallery-grid { grid-template-columns: 1fr; }
   .intro-strip__inner { gap: 2rem; }
 }
+
+/* Keep Vagaro container off-screen — triggered programmatically */
+.vagaro-container {
+  position: fixed !important;
+  left: -9999px !important;
+  top: -9999px !important;
+}
