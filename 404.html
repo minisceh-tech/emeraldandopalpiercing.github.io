@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Emerald &amp; Opal Piercing Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>
+    // Auto-redirect known old Wix URLs to correct pages
+    const path = window.location.pathname.toLowerCase();
+    if (path.includes('about')) {
+      window.location.replace('/about.html');
+    } else if (path.includes('service') || path.includes('pricing') || path.includes('piercing') || path.includes('party') || path.includes('lobe')) {
+      window.location.replace('/services.html');
+    } else if (path.includes('gallery') || path.includes('photo')) {
+      window.location.replace('/gallery.html');
+    } else if (path.includes('faq') || path.includes('question')) {
+      window.location.replace('/faq.html');
+    } else if (path.includes('contact') || path.includes('book')) {
+      window.location.replace('/contact.html');
+    }
+  </script>
+</head>
+<body>
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-name">Emerald &amp; Opal</span>
+        <span class="nav__logo-sub">Piercing Studio</span>
+      </a>
+    </div>
+  </nav>
+
+  <section class="section" style="text-align:center;padding-top:8rem;">
+    <div class="container" style="max-width:560px;">
+      <span class="label">404</span>
+      <h1 style="margin:1rem 0 1.25rem;">Page Not Found</h1>
+      <p style="margin-bottom:2.5rem;">The page you're looking for has moved or no longer exists. Here's where you can go:</p>
+      <div style="display:flex;flex-direction:column;gap:.75rem;align-items:center;">
+        <a href="index.html" class="btn btn-primary">Home</a>
+        <a href="services.html" class="btn btn-outline">Services &amp; Pricing</a>
+        <a href="about.html" class="btn btn-outline">About</a>
+        <a href="gallery.html" class="btn btn-outline">Gallery</a>
+        <a href="faq.html" class="btn btn-outline">FAQ</a>
+        <a href="contact.html" class="btn btn-outline">Contact</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
