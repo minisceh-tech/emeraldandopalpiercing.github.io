@@ -14,14 +14,17 @@
     const path = window.location.pathname.toLowerCase();
     if (path.includes('about')) {
       window.location.replace('/about.html');
-    } else if (path.includes('service') || path.includes('pricing') || path.includes('piercing') || path.includes('party') || path.includes('lobe')) {
-      window.location.replace('/services.html');
-    } else if (path.includes('gallery') || path.includes('photo')) {
-      window.location.replace('/gallery.html');
-    } else if (path.includes('faq') || path.includes('question')) {
+    } else if (path.includes('aftercare') || path.includes('faq') || path.includes('question') || path.includes('downsize') || path.includes('downsizing')) {
       window.location.replace('/faq.html');
-    } else if (path.includes('contact') || path.includes('book')) {
+    } else if (path.includes('book-online') || path.includes('contact') || path.includes('book')) {
       window.location.replace('/contact.html');
+    } else if (path.includes('gallery') || path.includes('photo') || path.includes('category')) {
+      window.location.replace('/gallery.html');
+    } else if (path.includes('service') || path.includes('pricing') || path.includes('piercing') || path.includes('party') || path.includes('lobe') || path.includes('jewelry') || path.includes('post')) {
+      window.location.replace('/services.html');
+    } else {
+      // fallback — send to home
+      window.location.replace('/');
     }
   </script>
 </head>
