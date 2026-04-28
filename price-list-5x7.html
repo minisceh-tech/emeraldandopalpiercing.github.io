@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emerald &amp; Opal — Price List (5×7)</title>
+  <style>
+    @page {
+      size: 5in 7in;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: white;
+    }
+
+    /* ── Each card is one printed page ──────────── */
+    .card {
+      width: 5in;
+      height: 7in;
+      padding: 0.38in 0.4in 0.3in;
+      background: none;
+      color: #2C4A3E;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    .card:last-child {
+      page-break-after: avoid;
+    }
+
+    /* ── Header ──────────────────────────────────── */
+    header {
+      text-align: center;
+      margin-bottom: 0.11in;
+    }
+
+    .business-name {
+      font-size: 19pt;
+      font-weight: normal;
+      letter-spacing: 0.1em;
+      color: #2C4A3E;
+      line-height: 1.1;
+    }
+
+    .ampersand {
+      color: #BEA55A;
+    }
+
+    .tagline {
+      font-size: 6.5pt;
+      letter-spacing: 0.2em;
+      color: #BEA55A;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .card-subtitle {
+      font-size: 6.5pt;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8a7a5a;
+      margin-top: 2px;
+    }
+
+    /* ── Dividers ─────────────────────────────────── */
+    .divider-thick {
+      border: none;
+      border-top: 2px solid #BEA55A;
+      margin: 0.09in 0 0.07in;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #BEA55A;
+      margin: 0.08in 0;
+    }
+
+    /* ── Two-column layout (card 2 only) ─────────── */
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 0 0.22in;
+    }
+
+    .col-divider {
+      background-color: rgba(190, 165, 90, 0.4);
+    }
+
+    /* ── Price table ──────────────────────────────── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      font-size: 5.5pt;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #BEA55A;
+      border-bottom: 0.5px solid #BEA55A;
+      padding: 0 3px 3px;
+      text-align: left;
+    }
+
+    thead th.price-col {
+      text-align: right;
+    }
+
+    tbody tr {
+      border-bottom: 0.5px solid rgba(44, 74, 62, 0.08);
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: rgba(190, 165, 90, 0.07);
+    }
+
+    td {
+      padding: 3px 3px;
+      vertical-align: middle;
+      line-height: 1.2;
+    }
+
+    .item-num {
+      font-size: 5.8pt;
+      color: #9a8a6a;
+      white-space: nowrap;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.02em;
+    }
+
+    /* Card 1 — single column, roomier */
+    .card-gold .item-num  { width: 0.62in; }
+    .card-gold .item-name { font-size: 7.5pt; color: #2C4A3E; }
+    .card-gold .item-price { font-size: 8pt; }
+
+    /* Card 2 — two columns, compact */
+    .card-two .item-num  { width: 0.52in; }
+    .card-two .item-name { font-size: 7pt; color: #2C4A3E; }
+    .card-two .item-price { font-size: 7.5pt; }
+
+    .item-price {
+      text-align: right;
+      font-weight: bold;
+      color: #BEA55A;
+      white-space: nowrap;
+      width: 0.38in;
+    }
+
+    /* ── Category label rows ──────────────────────── */
+    .cat-row td {
+      padding-top: 6px;
+      padding-bottom: 1px;
+      border-bottom: none !important;
+      background: none !important;
+    }
+
+    .cat-label {
+      font-size: 5.5pt;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #BEA55A;
+      font-style: italic;
+    }
+
+    /* ── Footer ───────────────────────────────────── */
+    footer {
+      text-align: center;
+      margin-top: 0.08in;
+      font-size: 5.5pt;
+      letter-spacing: 0.09em;
+      color: #9a8a6a;
+    }
+
+    .footer-inner {
+      border-top: 1px solid #BEA55A;
+      padding-top: 0.06in;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       CARD 1 — 14K Gold
+  ════════════════════════════════════════════════ -->
+  <div class="card card-gold">
+
+    <header>
+      <div class="business-name">Emerald <span class="ampersand">&amp;</span> Opal</div>
+      <div class="card-subtitle">14K Gold Collection</div>
+    </header>
+
+    <div class="divider-thick"></div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item #</th>
+          <th>Name</th>
+          <th class="price-col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="item-num">108E</td>
+          <td class="item-name">3mm Cream Pearl (Prong Set)</td>
+          <td class="item-price">$100</td>
+        </tr>
+        <tr>
+          <td class="item-num">65E</td>
+          <td class="item-name">3mm Pink Ice CZ</td>
+          <td class="item-price">$65</td>
+        </tr>
+        <tr>
+          <td class="item-num">23E</td>
+          <td class="item-name">2mm Prong CZ</td>
+          <td class="item-price">$110</td>
+        </tr>
+        <tr>
+          <td class="item-num">1074E</td>
+          <td class="item-name">Triple Ball</td>
+          <td class="item-price">$170</td>
+        </tr>
+        <tr>
+          <td class="item-num">7E</td>
+          <td class="item-name">3mm CZ</td>
+          <td class="item-price">$110</td>
+        </tr>
+        <tr>
+          <td class="item-num">7E-SP</td>
+          <td class="item-name">3mm CZ Short Post</td>
+          <td class="item-price">$105</td>
+        </tr>
+        <tr>
+          <td class="item-num">1040E-1</td>
+          <td class="item-name">3mm Invisible Set w/ Crystal</td>
+          <td class="item-price">$125</td>
+        </tr>
+        <tr>
+          <td class="item-num">848E</td>
+          <td class="item-name">Butterfly w/ CZ</td>
+          <td class="item-price">$175</td>
+        </tr>
+        <tr>
+          <td class="item-num">123E</td>
+          <td class="item-name">4 Prong Diamond</td>
+          <td class="item-price">$190</td>
+        </tr>
+        <tr>
+          <td class="item-num">8E</td>
+          <td class="item-name">5 Pt Diamond</td>
+          <td class="item-price">$255</td>
+        </tr>
+        <tr>
+          <td class="item-num">867C</td>
+          <td class="item-name">White Gold Enameled Flower</td>
+          <td class="item-price">$150</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <footer>
+      <div class="footer-inner">
+        All jewelry is hypoallergenic &nbsp;&bull;&nbsp;
+        Jewelry is not included with piercing services and is an additional cost
+      </div>
+    </footer>
+
+  </div><!-- card 1 -->
+
+
+  <!-- ═══════════════════════════════════════════════
+       CARD 2 — Titanium + Fashion & Children's
+  ════════════════════════════════════════════════ -->
+  <div class="card card-two">
+
+    <header>
+      <div class="business-name">Emerald <span class="ampersand">&amp;</span> Opal</div>
+      <div class="card-subtitle">Titanium &amp; Fashion Collection</div>
+    </header>
+
+    <div class="divider-thick"></div>
+
+    <div class="columns">
+
+      <!-- Left: Titanium -->
+      <table>
+        <thead>
+          <tr>
+            <th>Item #</th>
+            <th>Name</th>
+            <th class="price-col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row">
+            <td colspan="3" class="cat-label">Implant-Grade Titanium</td>
+          </tr>
+          <tr>
+            <td class="item-num">592C</td>
+            <td class="item-name">3mm Prong CZ</td>
+            <td class="item-price">$40</td>
+          </tr>
+          <tr>
+            <td class="item-num">593C</td>
+            <td class="item-name">3mm Prong Pink CZ</td>
+            <td class="item-price">$40</td>
+          </tr>
+          <tr>
+            <td class="item-num">550C</td>
+            <td class="item-name">3mm Crystal Bezel</td>
+            <td class="item-price">$40</td>
+          </tr>
+          <tr>
+            <td class="item-num">551C</td>
+            <td class="item-name">3mm Rose Bezel</td>
+            <td class="item-price">$40</td>
+          </tr>
+          <tr>
+            <td class="item-num">553C</td>
+            <td class="item-name">3mm Blue Zircon Bezel</td>
+            <td class="item-price">$40</td>
+          </tr>
+          <tr>
+            <td class="item-num">16E</td>
+            <td class="item-name">4mm Ball</td>
+            <td class="item-price">$40</td>
+          </tr>
+          <tr>
+            <td class="item-num">556C</td>
+            <td class="item-name">4mm Cream Pearl</td>
+            <td class="item-price">$40</td>
+          </tr>
+          <tr>
+            <td class="item-num">555C</td>
+            <td class="item-name">4mm Rosaline Pink Pearl</td>
+            <td class="item-price">$40</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="col-divider"></div>
+
+      <!-- Right: Fashion & Children's -->
+      <table>
+        <thead>
+          <tr>
+            <th>Item #</th>
+            <th>Name</th>
+            <th class="price-col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row">
+            <td colspan="3" class="cat-label">Fashion &amp; Children's</td>
+          </tr>
+          <tr>
+            <td class="item-num">848S</td>
+            <td class="item-name">SS Clear Crystal Butterfly</td>
+            <td class="item-price">$35</td>
+          </tr>
+          <tr>
+            <td class="item-num">008C</td>
+            <td class="item-name">SS Butterfly Glitter Pink</td>
+            <td class="item-price">$35</td>
+          </tr>
+          <tr>
+            <td class="item-num">1089C</td>
+            <td class="item-name">SS Black Cat</td>
+            <td class="item-price">$35</td>
+          </tr>
+          <tr>
+            <td class="item-num">032C</td>
+            <td class="item-name">SS 7-Crystal Crown</td>
+            <td class="item-price">$35</td>
+          </tr>
+          <tr>
+            <td class="item-num">621C-1</td>
+            <td class="item-name">SS Panda w/ Pink Bow</td>
+            <td class="item-price">$35</td>
+          </tr>
+          <tr>
+            <td class="item-num">1228C</td>
+            <td class="item-name">SS Flower Topaz Crystal</td>
+            <td class="item-price">$35</td>
+          </tr>
+          <tr>
+            <td class="item-num">623C-1</td>
+            <td class="item-name">SS Rose Glitter &amp; Flower</td>
+            <td class="item-price">$35</td>
+          </tr>
+          <tr>
+            <td class="item-num">010C</td>
+            <td class="item-name">SS Glitter Unicorn</td>
+            <td class="item-price">$35</td>
+          </tr>
+          <tr>
+            <td class="item-num">840C-1</td>
+            <td class="item-name">24K GP Heart — Pink</td>
+            <td class="item-price">$40</td>
+          </tr>
+          <tr>
+            <td class="item-num">840C-2</td>
+            <td class="item-name">24K GP Heart — Red</td>
+            <td class="item-price">$40</td>
+          </tr>
+          <tr>
+            <td class="item-num">1264C</td>
+            <td class="item-name">24K GP Star Pink Enamel</td>
+            <td class="item-price">$40</td>
+          </tr>
+          <tr>
+            <td class="item-num">1244C</td>
+            <td class="item-name">24K GP Enamel Cupcake</td>
+            <td class="item-price">$40</td>
+          </tr>
+          <tr>
+            <td class="item-num">1277C</td>
+            <td class="item-name">GP Star w/ Enamel Ribbon</td>
+            <td class="item-price">$40</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div><!-- .columns -->
+
+    <div class="divider"></div>
+
+    <footer>
+      <div class="footer-inner">
+        All jewelry is hypoallergenic &nbsp;&bull;&nbsp;
+        Jewelry is not included with piercing services and is an additional cost
+      </div>
+    </footer>
+
+  </div><!-- card 2 -->
+
+</body>
+</html>

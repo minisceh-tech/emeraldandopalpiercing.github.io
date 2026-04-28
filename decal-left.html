@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E&O — Left Window Decal 10x14</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: 10in 14in;
+      margin: 0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 10in;
+      height: 14in;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .decal {
+      width: 7in;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .section-label {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+      letter-spacing: 3pt;
+      text-transform: uppercase;
+      color: #7a8a85;
+      margin-bottom: 22pt;
+    }
+
+    .item {
+      font-size: 26pt;
+      font-weight: 700;
+      color: #2C4A3E;
+      letter-spacing: 0.5pt;
+      padding: 11pt 0;
+      width: 100%;
+    }
+
+    .rule {
+      display: flex;
+      align-items: center;
+      gap: 10pt;
+      width: 100%;
+      margin: 28pt 0;
+    }
+    .rule-line { flex: 1; height: 1pt; background: #e0ddd8; }
+    .rule-dot  { width: 8pt; height: 8pt; color: #BEA55A; font-size: 10pt; flex-shrink: 0; font-family: Arial; }
+
+    .boutique {
+      font-size: 26pt;
+      font-weight: 500;
+      color: #2C4A3E;
+      letter-spacing: 0.5pt;
+      margin-bottom: 12pt;
+    }
+
+    .sub {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+      letter-spacing: 2.5pt;
+      text-transform: uppercase;
+      color: #BEA55A;
+    }
+  </style>
+</head>
+<body>
+  <div class="decal">
+
+    <div class="section-label">Services</div>
+
+    <div class="item">Ear Lobe Piercing</div>
+    <div class="item">Curated Ear Design</div>
+
+    <div class="rule">
+      <div class="rule-line"></div>
+      <div class="rule-dot">◇</div>
+      <div class="rule-line"></div>
+    </div>
+
+    <div class="section-label">Shop</div>
+
+    <div class="boutique">Jewelry Boutique</div>
+    <div class="sub">Curated · Gift-Ready</div>
+
+  </div>
+</body>
+</html>

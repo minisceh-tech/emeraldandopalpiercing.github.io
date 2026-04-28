@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E&O — Right Window Decal 10x14</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: 10in 14in;
+      margin: 0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 10in;
+      height: 14in;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .decal {
+      width: 7in;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0;
+    }
+
+    .name {
+      font-size: 32pt;
+      font-weight: 500;
+      color: #2C4A3E;
+      letter-spacing: 0.5pt;
+      margin-bottom: 16pt;
+      white-space: nowrap;
+    }
+
+    .rule {
+      display: flex;
+      align-items: center;
+      gap: 10pt;
+      width: 100%;
+      margin-bottom: 14pt;
+    }
+    .rule-line { flex: 1; height: 1pt; background: #BEA55A; }
+    .rule-dot  { width: 6pt; height: 6pt; border-radius: 50%; background: #BEA55A; flex-shrink: 0; }
+
+    .sub-label {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+      letter-spacing: 2.5pt;
+      text-transform: uppercase;
+      color: #7a8a85;
+      margin-bottom: 30pt;
+    }
+
+    /* QR placeholder box */
+    .qr-area {
+      width: 3.2in;
+      height: 3.2in;
+      border: 2pt solid #2C4A3E;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28pt;
+      position: relative;
+    }
+
+    /* Corner marks */
+    .qr-area::before, .qr-area::after {
+      content: '';
+      position: absolute;
+      width: 0.35in;
+      height: 0.35in;
+      border-color: #2C4A3E;
+      border-style: solid;
+    }
+    .qr-area::before { top: 0.12in; left: 0.12in; border-width: 3pt 0 0 3pt; }
+    .qr-area::after  { bottom: 0.12in; right: 0.12in; border-width: 0 3pt 3pt 0; }
+
+    .qr-inner {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 8pt;
+      letter-spacing: 2pt;
+      text-transform: uppercase;
+      color: #aaa;
+      text-align: center;
+      line-height: 2;
+    }
+    .qr-inner strong {
+      display: block;
+      font-size: 11pt;
+      color: #2C4A3E;
+      letter-spacing: 1pt;
+      margin-bottom: 6pt;
+    }
+
+    .cta {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11pt;
+      letter-spacing: 3pt;
+      text-transform: uppercase;
+      color: #2C4A3E;
+      margin-bottom: 8pt;
+    }
+    .cta-sub {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+      letter-spacing: 2pt;
+      text-transform: uppercase;
+      color: #BEA55A;
+    }
+  </style>
+</head>
+<body>
+  <div class="decal">
+    <div class="name">Emerald &amp; Opal</div>
+    <div class="rule">
+      <div class="rule-line"></div>
+      <div class="rule-dot"></div>
+      <div class="rule-line"></div>
+    </div>
+    <div class="sub-label">Book Your Appointment</div>
+
+    <div class="qr-area">
+      <div class="qr-inner">
+        <strong>Place QR Code Here</strong>
+        Replace with QR image<br>
+        from qr.io<br>
+        <br>
+        emeraldandopalpiercing.com/book
+      </div>
+    </div>
+
+    <div class="cta">Scan to Book</div>
+    <div class="cta-sub">emeraldandopalpiercing.com</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emerald &amp; Opal — Price List</title>
+  <style>
+    @font-face {
+      font-family: 'Playfair Display';
+      font-style: normal;
+      font-weight: 400;
+      src: url('fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+    }
+    @page {
+      size: 8in 10in;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 8in;
+      height: 10in;
+      padding: 0.65in 0.68in;
+      font-family: 'Playfair Display', Georgia, serif;
+      background: none;
+      color: #2C4A3E;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* ── Header ──────────────────────────────────── */
+    header {
+      text-align: center;
+      margin-bottom: 0.22in;
+    }
+
+    .business-name {
+      font-size: 38pt;
+      font-weight: normal;
+      letter-spacing: 0.1em;
+      color: #2C4A3E;
+      line-height: 1.1;
+    }
+
+    .ampersand {
+      color: #BEA55A;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 10pt;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #8a7a5a;
+      margin-top: 0.13in;
+      margin-bottom: 0.09in;
+    }
+
+    /* ── Dividers ─────────────────────────────────── */
+    .divider-thick {
+      border: none;
+      border-top: 2px solid #BEA55A;
+      margin: 0.16in 0 0.1in;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #BEA55A;
+      margin: 0.16in 0 0;
+    }
+
+    /* ── Two-column layout ───────────────────────── */
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 0 0.42in;
+      align-items: start;
+    }
+
+    .col-divider {
+      background-color: rgba(190, 165, 90, 0.4);
+      align-self: stretch;
+    }
+
+    /* ── 14K Gold table (left column) ───────────── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .col-label {
+      font-size: 9pt;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #BEA55A;
+      font-style: italic;
+      padding-bottom: 0.09in;
+      display: block;
+    }
+
+    thead th {
+      font-size: 8.5pt;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #BEA55A;
+      border-bottom: 0.5px solid #BEA55A;
+      padding: 0 4px 5px;
+      text-align: left;
+    }
+
+    thead th.price-col {
+      text-align: right;
+    }
+
+    tbody tr {
+      border-bottom: 0.5px solid rgba(44, 74, 62, 0.08);
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: rgba(190, 165, 90, 0.07);
+    }
+
+    td {
+      padding: 5px 4px;
+      vertical-align: middle;
+      line-height: 1.25;
+    }
+
+    .item-num {
+      font-size: 8.5pt;
+      color: #9a8a6a;
+      white-space: nowrap;
+      width: 0.78in;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.02em;
+    }
+
+    .item-name {
+      font-size: 10pt;
+      color: #2C4A3E;
+    }
+
+    .item-price {
+      text-align: right;
+      font-size: 11pt;
+      font-weight: bold;
+      color: #BEA55A;
+      white-space: nowrap;
+      width: 0.55in;
+    }
+
+    /* ── Right column — category blocks ─────────── */
+    .right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.32in;
+      padding-top: 0;
+    }
+
+    .cat-block {
+      border-top: 0.5px solid rgba(190, 165, 90, 0.5);
+      padding-top: 0.18in;
+    }
+
+    .cat-block:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .cat-block-name {
+      font-size: 12pt;
+      color: #2C4A3E;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    .cat-block-desc {
+      font-size: 9pt;
+      color: #7a8a7a;
+      font-style: italic;
+      margin-top: 5px;
+      line-height: 1.4;
+    }
+
+    .cat-block-price {
+      font-size: 22pt;
+      font-weight: bold;
+      color: #BEA55A;
+      margin-top: 0.1in;
+      letter-spacing: 0.02em;
+    }
+
+    .cat-block-price span {
+      font-size: 10pt;
+      font-weight: normal;
+      color: #9a8a6a;
+      letter-spacing: 0.08em;
+      margin-left: 4px;
+    }
+
+    /* ── Footer ───────────────────────────────────── */
+    footer {
+      text-align: center;
+      margin-top: 0;
+      font-size: 8.5pt;
+      letter-spacing: 0.1em;
+      color: #9a8a6a;
+    }
+
+    .footer-inner {
+      border-bottom: 1px solid #BEA55A;
+      padding-top: 0.13in;
+      padding-bottom: 0.13in;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="business-name">Emerald <span class="ampersand">&amp;</span> Opal</div>
+    <div class="section-title">Earring Collection &amp; Retail Pricing</div>
+  </header>
+
+  <div class="divider-thick"></div>
+
+  <div class="columns">
+
+    <!-- ═══ LEFT — 14K Gold itemized ═══════════════ -->
+    <div>
+      <span class="col-label">14K Gold</span>
+      <table>
+        <thead>
+          <tr>
+            <th>Item #</th>
+            <th>Name</th>
+            <th class="price-col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="item-num">65E</td>
+            <td class="item-name">3mm Pink Ice CZ</td>
+            <td class="item-price">$65</td>
+          </tr>
+          <tr>
+            <td class="item-num">108E</td>
+            <td class="item-name">3mm Cream Pearl (Prong Set)</td>
+            <td class="item-price">$100</td>
+          </tr>
+          <tr>
+            <td class="item-num">7E-SP</td>
+            <td class="item-name">3mm CZ Short Post</td>
+            <td class="item-price">$105</td>
+          </tr>
+          <tr>
+            <td class="item-num">23E</td>
+            <td class="item-name">2mm Prong CZ</td>
+            <td class="item-price">$110</td>
+          </tr>
+          <tr>
+            <td class="item-num">7E</td>
+            <td class="item-name">3mm CZ</td>
+            <td class="item-price">$110</td>
+          </tr>
+          <tr>
+            <td class="item-num">1040E-1</td>
+            <td class="item-name">3mm Invisible Set w/ Crystal</td>
+            <td class="item-price">$125</td>
+          </tr>
+          <tr>
+            <td class="item-num">867C</td>
+            <td class="item-name">White Gold Enameled Flower</td>
+            <td class="item-price">$150</td>
+          </tr>
+          <tr>
+            <td class="item-num">1074E</td>
+            <td class="item-name">Triple Ball</td>
+            <td class="item-price">$170</td>
+          </tr>
+          <tr>
+            <td class="item-num">848E</td>
+            <td class="item-name">Butterfly w/ CZ</td>
+            <td class="item-price">$175</td>
+          </tr>
+          <tr>
+            <td class="item-num">123E</td>
+            <td class="item-name">4 Prong Diamond</td>
+            <td class="item-price">$190</td>
+          </tr>
+          <tr>
+            <td class="item-num">8E</td>
+            <td class="item-name">5 Pt Diamond</td>
+            <td class="item-price">$255</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- column separator -->
+    <div class="col-divider"></div>
+
+    <!-- ═══ RIGHT — Category pricing ═══════════════ -->
+    <div class="right-col">
+
+      <div class="cat-block">
+        <div class="cat-block-name">Medical Grade Stainless Steel</div>
+        <div class="cat-block-desc">Butterflies, animals, florals &amp; more. Perfect for kids &amp; first piercings</div>
+        <div class="cat-block-price">$35 <span>per pair</span></div>
+      </div>
+
+      <div class="cat-block">
+        <div class="cat-block-name">Implant-Grade Titanium</div>
+        <div class="cat-block-desc">Hypoallergenic &amp; ideal for new piercings — available in a variety of stones, pearls &amp; finishes</div>
+        <div class="cat-block-price">$40 <span>per pair</span></div>
+      </div>
+
+      <div class="cat-block">
+        <div class="cat-block-name">24K Gold Plated</div>
+        <div class="cat-block-desc">Classic &amp; fun styles including hearts, stars &amp; enamel designs</div>
+        <div class="cat-block-price">$40 <span>per pair</span></div>
+      </div>
+
+    </div>
+
+  </div><!-- .columns -->
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="footer-inner">
+      All jewelry is hypoallergenic &nbsp;&bull;&nbsp; Jewelry is not included with piercing services and is an additional cost
+    </div>
+  </footer>
+
+</body>
+</html>

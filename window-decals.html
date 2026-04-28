@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E&O Window Decals — Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #e8e4dd;
+      font-family: 'Playfair Display', serif;
+      padding: 60px 40px;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7a8a85;
+      margin-bottom: 10px;
+    }
+    .sub {
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 60px;
+    }
+
+    .layout {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .decal-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .decal-label {
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #7a8a85;
+    }
+
+    /* Simulate frosted/vinyl on glass */
+    .decal {
+      background: white;
+      border: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    }
+
+    /* ── DOOR DECAL ── */
+    .door {
+      width: 300px;
+      height: 420px;
+      padding: 48px 40px;
+    }
+
+    .door .name {
+      font-size: 34px;
+      font-weight: 600;
+      color: #2C4A3E;
+      line-height: 1;
+      text-align: center;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+
+    .door .rule {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 18px 0 16px;
+      width: 100%;
+    }
+    .door .rule-line {
+      flex: 1;
+      height: 1px;
+      background: #BEA55A;
+    }
+    .door .rule-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #BEA55A;
+    }
+
+    .door .tagline {
+      font-size: 20px;
+      font-weight: 400;
+      color: #2C4A3E;
+      text-align: center;
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+    }
+
+    .door .divider {
+      width: 60px;
+      height: 1px;
+      background: #e0ddd8;
+      margin-bottom: 28px;
+    }
+
+    .door .detail {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #7a8a85;
+      text-align: center;
+      line-height: 2.2;
+    }
+
+    /* ── SIDE WINDOW — QR ── */
+    .side-qr {
+      width: 260px;
+      height: 420px;
+      padding: 44px 36px;
+    }
+
+    .side-qr .small-name {
+      font-size: 22px;
+      font-weight: 500;
+      color: #2C4A3E;
+      text-align: center;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+
+    .side-qr .rule {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 14px 0 12px;
+      width: 100%;
+    }
+    .side-qr .rule-line { flex: 1; height: 1px; background: #BEA55A; }
+    .side-qr .rule-dot { width: 4px; height: 4px; border-radius: 50%; background: #BEA55A; }
+
+    .side-qr .small-tag {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #7a8a85;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .qr-box {
+      width: 140px;
+      height: 140px;
+      border: 1.5px solid #2C4A3E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      position: relative;
+    }
+    /* QR corner marks */
+    .qr-box::before, .qr-box::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-color: #2C4A3E;
+      border-style: solid;
+    }
+    .qr-box::before { top: 6px; left: 6px; border-width: 2px 0 0 2px; }
+    .qr-box::after  { bottom: 6px; right: 6px; border-width: 0 2px 2px 0; }
+
+    /* Simulated QR grid */
+    .qr-grid {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      grid-template-rows: repeat(9, 1fr);
+      gap: 2px;
+      width: 100px;
+      height: 100px;
+    }
+    .qr-cell { background: #2C4A3E; border-radius: 1px; }
+    .qr-cell.off { background: transparent; }
+
+    .side-qr .cta {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #2C4A3E;
+      text-align: center;
+    }
+    .side-qr .cta-sub {
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #BEA55A;
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    /* ── SIDE WINDOW — SERVICES ── */
+    .side-services {
+      width: 260px;
+      height: 420px;
+      padding: 44px 36px;
+    }
+
+    .side-services .small-name {
+      font-size: 22px;
+      font-weight: 500;
+      color: #2C4A3E;
+      text-align: center;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+
+    .side-services .rule {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 14px 0 12px;
+      width: 100%;
+    }
+    .side-services .rule-line { flex: 1; height: 1px; background: #BEA55A; }
+    .side-services .rule-dot { width: 4px; height: 4px; border-radius: 50%; background: #BEA55A; }
+
+    .side-services .small-tag {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #7a8a85;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .gem-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    .gem-row .gem-line { flex: 1; height: 1px; background: #e0ddd8; }
+    .gem-row .gem-sym { color: #BEA55A; font-size: 12px; }
+
+    .service-list {
+      list-style: none;
+      text-align: center;
+      width: 100%;
+    }
+    .service-list li {
+      font-size: 13px;
+      color: #2C4A3E;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 9px 0;
+      border-bottom: 1px solid #f0ede6;
+      font-weight: 400;
+    }
+    .service-list li:last-child { border-bottom: none; }
+
+    .side-services .address {
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #aaa;
+      text-align: center;
+      margin-top: 22px;
+      line-height: 2;
+    }
+
+    /* ── Canva Notes ── */
+    .notes {
+      max-width: 900px;
+      margin: 60px auto 0;
+      background: white;
+      border: 1px solid #ddd;
+      padding: 36px 40px;
+    }
+    .notes h2 {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #2C4A3E;
+      margin-bottom: 24px;
+    }
+    .notes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    .note-col h3 {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #BEA55A;
+      margin-bottom: 10px;
+    }
+    .note-col p, .note-col li {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: #555;
+      line-height: 1.7;
+    }
+    .note-col ul { padding-left: 14px; }
+    .swatch {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Emerald &amp; Opal — Window Decals</h1>
+  <div class="sub">Mockup · Three-piece set · Door + Side Windows</div>
+
+  <div class="layout">
+
+    <!-- Left window: Services -->
+    <div class="decal-wrap">
+      <div class="decal side-services">
+        <div style="font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#7a8a85;text-align:center;margin-bottom:20px;">Services</div>
+
+        <ul class="service-list">
+          <li>Ear Lobe Piercing</li>
+          <li>Curated Ear Design</li>
+        </ul>
+
+        <div class="gem-row" style="margin-top:18px;margin-bottom:18px;"><div class="gem-line"></div><div class="gem-sym">◇</div><div class="gem-line"></div></div>
+
+        <div style="font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#7a8a85;text-align:center;margin-bottom:14px;">Shop</div>
+
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:500;color:#2C4A3E;text-align:center;letter-spacing:0.5px;">Jewelry Boutique</div>
+
+        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#BEA55A;text-align:center;margin-top:10px;">Curated · Gift-Ready</div>
+      </div>
+      <div class="decal-label">Left Window — Services</div>
+    </div>
+
+    <!-- Door -->
+    <div class="decal-wrap">
+      <div class="decal door">
+        <div class="name">Emerald &amp; Opal</div>
+        <div class="rule">
+          <div class="rule-line"></div>
+          <div class="rule-dot"></div>
+          <div class="rule-line"></div>
+        </div>
+        <div class="tagline">Ear Piercing &amp; Jewelry</div>
+
+        <div class="divider"></div>
+
+        <div class="detail">
+          Book Online<br>
+          Walk-ins Welcome<br>
+          <br>
+          emeraldandopalpiercing.com<br>
+          503.217.4065
+        </div>
+      </div>
+      <div class="decal-label">Door — Primary</div>
+    </div>
+
+    <!-- Right window: QR -->
+    <div class="decal-wrap">
+      <div class="decal side-qr">
+        <div class="small-name">Emerald &amp; Opal</div>
+        <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line"></div></div>
+        <div class="small-tag">Book Your Appointment</div>
+
+        <div class="qr-box">
+          <!-- Decorative QR stand-in — replace with your actual QR in Canva -->
+          <div class="qr-grid">
+            <!-- Row 1 -->
+            <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div>
+            <!-- Row 2 -->
+            <div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div>
+            <!-- Row 3 -->
+            <div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div>
+            <!-- Row 4 -->
+            <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div>
+            <!-- Row 5 -->
+            <div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell"></div>
+            <!-- Row 6 -->
+            <div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div>
+            <!-- Row 7 -->
+            <div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div>
+            <!-- Row 8 -->
+            <div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell off"></div>
+            <!-- Row 9 -->
+            <div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell off"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div><div class="qr-cell"></div>
+          </div>
+        </div>
+
+        <div class="cta">Scan to Book</div>
+        <div class="cta-sub">emeraldandopalpiercing.com</div>
+      </div>
+      <div class="decal-label">Right Window — QR Booking</div>
+    </div>
+
+  </div>
+
+  <!-- Canva Build Notes -->
+  <div class="notes">
+    <h2>Canva Build Notes</h2>
+    <div class="notes-grid">
+
+      <div class="note-col">
+        <h3>Colors</h3>
+        <p>
+          <span class="swatch" style="background:#2C4A3E;"></span> Forest Green · <code>#2C4A3E</code><br>
+          <span class="swatch" style="background:#BEA55A;border:1px solid #ddd"></span> Gold · <code>#BEA55A</code><br>
+          <span class="swatch" style="background:#ffffff;border:1px solid #ccc"></span> White · <code>#FFFFFF</code><br>
+          <span class="swatch" style="background:#7a8a85;"></span> Muted text · <code>#7A8A85</code>
+        </p>
+      </div>
+
+      <div class="note-col">
+        <h3>Fonts</h3>
+        <ul>
+          <li><strong>Playfair Display</strong> — all headings, name, tagline</li>
+          <li>Weight: SemiBold (600) for main name, Regular (400) for tagline</li>
+          <li>Uppercase small text: any sans-serif at wide letter-spacing</li>
+          <li>Canva search: "Playfair Display"</li>
+        </ul>
+      </div>
+
+      <div class="note-col">
+        <h3>Recommended Sizes (Canva)</h3>
+        <ul>
+          <li><strong>Door:</strong> 10" × 14" or 12" × 16"</li>
+          <li><strong>Side windows:</strong> 10" × 14" each</li>
+          <li>Set to 300 DPI for print quality</li>
+          <li>Export as PNG (transparent bg) for die-cut vinyl</li>
+          <li>Replace QR placeholder with real QR from qr.io</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <p style="text-align:center;font-size:10px;color:#bbb;margin-top:40px;font-family:Arial,sans-serif;">Emerald &amp; Opal Piercing Studio — Window Decal Mockup · Replace QR placeholder with live Vagaro link</p>
+
+</body>
+</html>
