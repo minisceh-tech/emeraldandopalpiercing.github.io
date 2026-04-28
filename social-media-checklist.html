@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media Launch Checklist — Emerald &amp; Opal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest: #2C4A3E;
+      --gold:   #BEA55A;
+      --ivory:  #FAF9F6;
+      --cream:  #F0EDE6;
+      --slate:  #5C6B63;
+      --border: #DDD9D0;
+    }
+
+    body {
+      background: #e8e4dc;
+      font-family: 'DM Sans', Arial, sans-serif;
+      padding: 40px 20px;
+    }
+
+    .print-btn {
+      display: block;
+      width: fit-content;
+      margin: 0 auto 28px;
+      padding: 11px 32px;
+      background: var(--forest);
+      color: white;
+      border: none;
+      border-radius: 2px;
+      font-family: 'DM Sans', Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .print-btn:hover { background: #1e3329; }
+
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto 40px;
+      background: var(--ivory);
+      box-shadow: 0 4px 40px rgba(0,0,0,.18);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-header {
+      background: var(--forest);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      padding: 28px 40px 22px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .page-header-left {}
+    .brand { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold); letter-spacing: .04em; }
+    .doc-title { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.65); margin-top: 4px; }
+    .page-header-right { font-size: 10px; color: rgba(255,255,255,.5); text-align: right; line-height: 1.7; }
+
+    .page-body { padding: 32px 40px 40px; flex: 1; }
+
+    /* ── Section ── */
+    .section { margin-bottom: 28px; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--forest);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-bottom: 1.5px solid var(--forest);
+      padding-bottom: 5px;
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      font-size: 9.5px;
+      color: var(--slate);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      margin-top: 14px;
+      font-weight: 600;
+    }
+
+    /* ── Checklist items ── */
+    .item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .item:last-child { border-bottom: none; }
+    .box {
+      flex-shrink: 0;
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid var(--slate);
+      border-radius: 2px;
+      margin-top: 2px;
+    }
+    .item-content { flex: 1; }
+    .item-label {
+      font-size: 11px;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+    .item-note {
+      font-size: 10px;
+      color: var(--slate);
+      font-style: italic;
+      margin-top: 1px;
+      line-height: 1.4;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-right: 5px;
+      vertical-align: middle;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .tag-feed  { background: #e8f0ec; color: var(--forest); }
+    .tag-story { background: #f5f0e4; color: #8a6e20; }
+    .tag-reel  { background: #ede8f5; color: #5c3d8a; }
+
+    /* ── Pillars grid ── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .pillar {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 8px 6px;
+      text-align: center;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .pillar-icon { font-size: 14px; display: block; margin-bottom: 3px; }
+    .pillar-name { font-size: 8.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--forest); }
+
+    /* ── Hashtag block ── */
+    .hashtags {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 10px 14px;
+      font-size: 10px;
+      color: var(--slate);
+      line-height: 1.8;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── Two-col layout ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+    /* ── Footer ── */
+    .page-footer {
+      background: var(--cream);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      border-top: 1px solid var(--border);
+      padding: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .page-footer span { font-size: 9px; color: var(--slate); letter-spacing: .06em; }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .print-btn { display: none; }
+      .page { box-shadow: none; margin: 0; page-break-after: always; }
+      .page:last-of-type { page-break-after: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Print Checklist</button>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 1 — Strategy Overview + Pre-Move
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="brand">Emerald &amp; Opal</div>
+      <div class="doc-title">Social Media Launch Checklist · New Location</div>
+    </div>
+    <div class="page-header-right">
+      @emeraldandopalpiercing<br>
+      April 27 – May 31, 2026
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <!-- Content Pillars -->
+    <div class="section">
+      <div class="section-title">Content Pillars</div>
+      <div class="pillars">
+        <div class="pillar"><span class="pillar-icon">🏛️</span><span class="pillar-name">The New Space</span></div>
+        <div class="pillar"><span class="pillar-icon">💎</span><span class="pillar-name">The Work</span></div>
+        <div class="pillar"><span class="pillar-icon">📖</span><span class="pillar-name">Education</span></div>
+        <div class="pillar"><span class="pillar-icon">🤍</span><span class="pillar-name">Holly's Voice</span></div>
+        <div class="pillar"><span class="pillar-icon">🌿</span><span class="pillar-name">Community</span></div>
+      </div>
+    </div>
+
+    <!-- Pre-Move Countdown -->
+    <div class="section">
+      <div class="section-title">Pre-Move Countdown · April 27–30</div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-story">Story</span> <strong>April 27</strong> — Tease</div>
+          <div class="item-note">"Something exciting is happening this week…" — no details yet, just build anticipation.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>April 28</strong> — We're Moving Announcement</div>
+          <div class="item-note">Flat lay or jewelry close-up. "We're moving! 4 days until Emerald &amp; Opal has a brand new home." Tag Bethany Village if they have an account.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-story">Story</span> <strong>April 29</strong> — Peek at the New Studio</div>
+          <div class="item-note">Walk toward exterior or peek through the door — don't show inside yet. Poll: "Ready to see the new studio?"</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-story">Story</span> <span class="tag tag-feed">Feed</span> <strong>April 30</strong> — Last Night in the Old Studio</div>
+          <div class="item-note">"Last night at our old home. Grateful for every client who sat in that chair. Starting tomorrow, we have something even better waiting for you."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Opening Day -->
+    <div class="section">
+      <div class="section-title">Opening Day · May 1 ✨</div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-story">Story</span> <strong>Morning</strong> — We're Open at the New Studio!</div>
+          <div class="item-note">Post the address clearly. Save to a new "New Studio" Highlight.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-reel">Reel</span> <span class="tag tag-feed">Feed</span> <strong>Mid-Day</strong> — Studio Walk-Through</div>
+          <div class="item-note">Your most important post of the month. Show natural light, retail display, piercing area. "She's here. ✨ Come find us at Bethany Village, 15320 NW Central Dr., Suite D-2."</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-story">Story</span> <strong>Evening</strong> — First Client of the Day</div>
+          <div class="item-note">With client permission — celebrate the first piercing in the new studio.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label">☑ Create "New Studio" Story Highlight</div>
+          <div class="item-note">Start saving today's stories to a permanent highlight.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>Emerald &amp; Opal Piercing Studio · @emeraldandopalpiercing</span>
+    <span>Page 1 of 3</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 2 — Opening Week + Weeks 2 & 3
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="brand">Emerald &amp; Opal</div>
+      <div class="doc-title">Social Media Launch Checklist · New Location</div>
+    </div>
+    <div class="page-header-right">
+      @emeraldandopalpiercing<br>
+      April 27 – May 31, 2026
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <!-- Opening Week -->
+    <div class="section">
+      <div class="section-title">Opening Week · May 2–7</div>
+      <div class="section-subtitle">Focus: Show off the new space</div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-story">Story</span> <strong>May 2</strong> — Studio Detail Shots</div>
+          <div class="item-note">Pretty corners, jewelry in natural light. Ask clients who visited to share their experience.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>May 3</strong> — First Piercing Photo from New Studio</div>
+          <div class="item-note">"First [constellation/lobe/etc.] in the new studio. 🤍 Bethany Village, you've been so welcoming."</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-story">Story</span> <strong>May 4</strong> — Behind the Scenes</div>
+          <div class="item-note">Morning setup routine in the new space. Personal and real.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>May 5</strong> — Jewelry Education Post</div>
+          <div class="item-note">Flat lay or close-up with a caption about implant-grade jewelry. Drives saves and shares.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-story">Story</span> <strong>May 6</strong> — Client Reactions or Personal Note from Holly</div>
+          <div class="item-note">Share how the first week has felt — warm, honest, personal.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>May 7</strong> — "One Week In" Reflection Post</div>
+          <div class="item-note">How the move went, how clients have responded, what you love about the new space. Authentic content builds loyalty.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 2 -->
+    <div class="section">
+      <div class="section-title">Week 2 · May 8–14</div>
+      <div class="section-subtitle">Focus: Establish the new space as home base</div>
+
+      <div class="two-col">
+        <div>
+          <div class="item">
+            <div class="box"></div>
+            <div class="item-content">
+              <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>May 11</strong> — Healed Piercing</div>
+              <div class="item-note">Returning client — before/after if possible.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box"></div>
+            <div class="item-content">
+              <div class="item-label"><span class="tag tag-story">Story</span> <strong>May 12</strong> — Jewelry Poll</div>
+              <div class="item-note">"Which style is your favorite?" Show 2 options.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box"></div>
+            <div class="item-content">
+              <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>May 13</strong> — Studio Detail Shot</div>
+              <div class="item-note">Natural light, retail display, a beautiful corner.</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="item">
+            <div class="box"></div>
+            <div class="item-content">
+              <div class="item-label"><span class="tag tag-story">Story</span> <strong>May 14</strong> — Education Clip</div>
+              <div class="item-note">"Here's what implant-grade actually means."</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box"></div>
+            <div class="item-content">
+              <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>May 15</strong> — Fresh Piercing Photo</div>
+              <div class="item-note">New work with a warm, personal caption.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 3 -->
+    <div class="section">
+      <div class="section-title">Week 3 · May 15–21</div>
+      <div class="section-subtitle">Focus: Education + community</div>
+
+      <div class="two-col">
+        <div>
+          <div class="item">
+            <div class="box"></div>
+            <div class="item-content">
+              <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>May 18</strong> — Aftercare Tips</div>
+              <div class="item-note">High save potential — great for new followers.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box"></div>
+            <div class="item-content">
+              <div class="item-label"><span class="tag tag-story">Story</span> <strong>May 19</strong> — Q&amp;A Box</div>
+              <div class="item-note">"Ask me anything about ear piercing." Answer throughout the day.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box"></div>
+            <div class="item-content">
+              <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>May 20</strong> — Client Feature</div>
+              <div class="item-note">With permission — their story, their ear, their reaction.</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="item">
+            <div class="box"></div>
+            <div class="item-content">
+              <div class="item-label"><span class="tag tag-story">Story</span> <strong>May 21</strong> — "Did You Know?"</div>
+              <div class="item-note">One surprising fact about ear piercing or jewelry quality.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box"></div>
+            <div class="item-content">
+              <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>May 22</strong> — Jewelry Spotlight</div>
+              <div class="item-note">Feature a specific piece from the retail display.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>Emerald &amp; Opal Piercing Studio · @emeraldandopalpiercing</span>
+    <span>Page 2 of 3</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 3 — Week 4 + Best Practices + Hashtags
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="brand">Emerald &amp; Opal</div>
+      <div class="doc-title">Social Media Launch Checklist · New Location</div>
+    </div>
+    <div class="page-header-right">
+      @emeraldandopalpiercing<br>
+      April 27 – May 31, 2026
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <!-- Week 4 -->
+    <div class="section">
+      <div class="section-title">Week 4 · May 22–31</div>
+      <div class="section-subtitle">Focus: Momentum + booking push</div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>May 25</strong> — Best Work from the New Studio</div>
+          <div class="item-note">Curated ear stack — your strongest photo from the new space so far.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-story">Story</span> <strong>May 26</strong> — Availability Reminder</div>
+          <div class="item-note">"Spots available this week" with link to book. Simple and direct.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>May 27</strong> — Children's Piercing Content</div>
+          <div class="item-note">Gentle, sweet, reassuring for parents. Remind them ages 5+ are welcome.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-story">Story</span> <strong>May 28</strong> — Behind the Scenes Prep</div>
+          <div class="item-note">Jewelry sterilization, setup — show the care and detail that goes into every appointment.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="box"></div>
+        <div class="item-content">
+          <div class="item-label"><span class="tag tag-feed">Feed</span> <strong>May 29</strong> — One Month In ✨</div>
+          <div class="item-note">"One month in Bethany Village. Thank you." Heartfelt, personal, grateful. This is the post that deepens loyalty.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Story Highlights -->
+    <div class="section">
+      <div class="section-title">Story Highlights to Set Up</div>
+      <div class="two-col">
+        <div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">✦ New Studio</div><div class="item-note">Opening day + space reveal stories</div></div></div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">✦ Our Work</div><div class="item-note">Best piercing photos</div></div></div>
+        </div>
+        <div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">✦ Aftercare</div><div class="item-note">Care instructions and tips</div></div></div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">✦ Book Now</div><div class="item-note">Booking link and availability</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best Practices -->
+    <div class="section">
+      <div class="section-title">Ongoing Best Practices</div>
+      <div class="two-col">
+        <div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">Post 3–4x per week to feed</div></div></div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">Post to stories daily when possible</div></div></div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">End every caption with a soft CTA</div><div class="item-note">"Link in bio to book" or "DM me with questions"</div></div></div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">Reply to every comment within 24 hrs</div></div></div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">Reply to every DM</div></div></div>
+        </div>
+        <div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">Track saves + shares — not just likes</div><div class="item-note">Saves = valuable content. That's your loyal future client.</div></div></div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">Always get client permission before posting</div></div></div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">Tag @bethanyvvillage when relevant</div></div></div>
+          <div class="item"><div class="box"></div><div class="item-content"><div class="item-label">Use location tag: Bethany Village, Portland</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hashtags -->
+    <div class="section">
+      <div class="section-title">Hashtags — Rotate These</div>
+      <div class="hashtags">
+        #portlandpiercing &nbsp;·&nbsp; #earpiercing &nbsp;·&nbsp; #curatedear &nbsp;·&nbsp; #pdxpiercing &nbsp;·&nbsp; #bethanyvillage &nbsp;·&nbsp; #portlandoregon &nbsp;·&nbsp; #earstacking &nbsp;·&nbsp; #implantgradejewelry &nbsp;·&nbsp; #boutiquepiercing &nbsp;·&nbsp; #earpiercingportland &nbsp;·&nbsp; #nwportland &nbsp;·&nbsp; #pdxlocal &nbsp;·&nbsp; #earcuration &nbsp;·&nbsp; #piercingstudio
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>Emerald &amp; Opal Piercing Studio · @emeraldandopalpiercing</span>
+    <span>Page 3 of 3</span>
+  </div>
+</div>
+
+</body>
+</html>
