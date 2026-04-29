@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="E&O Expenses" />
+<meta name="robots" content="noindex, nofollow" />
+<title>E&O Expense Manager</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; background: #FAF8F4; color: #2C2C2C; -webkit-tap-highlight-color: transparent; }
+  button { cursor: pointer; border: none; font-family: inherit; }
+  input, select { font-family: inherit; -webkit-appearance: none; appearance: none; }
+
+  :root {
+    --sage: #7C9A7E; --dark: #4A6741; --cream: #FAF8F4;
+    --gold: #B8960C; --light: #EFF4EF; --border: #D4E0D4;
+    --red: #c0392b; --light-red: #fff0f0; --white: #fff;
+    --blue: #1565c0; --light-blue: #e3f2fd;
+  }
+
+  .screen { display: none; min-height: 100vh; }
+  .screen.active { display: block; }
+
+  /* PIN */
+  #pin-screen {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; min-height: 100vh;
+    background: linear-gradient(160deg, #3a5c35 0%, #4A6741 60%, #5c7a56 100%);
+    padding: 32px 24px;
+  }
+  .pin-logo { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 8px; }
+  .pin-title { font-size: 26px; font-weight: 300; color: #fff; letter-spacing: 0.02em; margin-bottom: 6px; font-family: Georgia, serif; }
+  .pin-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 48px; }
+  .pin-dots { display: flex; gap: 14px; margin-bottom: 36px; }
+  .pin-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.4); background: transparent; transition: background 0.15s; }
+  .pin-dot.filled { background: #fff; border-color: #fff; }
+  .pin-grid { display: grid; grid-template-columns: repeat(3, 72px); gap: 12px; }
+  .pin-key { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 22px; font-weight: 300; display: flex; align-items: center; justify-content: center; transition: background 0.1s; }
+  .pin-key:active { background: rgba(255,255,255,0.28); }
+  .pin-key.del { font-size: 17px; }
+  .pin-key.empty { background: transparent; border-color: transparent; pointer-events: none; }
+  .pin-error { color: #ffb3b3; font-size: 13px; margin-top: 20px; min-height: 20px; text-align: center; }
+  .pin-setup-hint { color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 28px; text-align: center; line-height: 1.6; }
+
+  /* SETUP */
+  #setup-screen {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; min-height: 100vh;
+    background: linear-gradient(160deg, #3a5c35 0%, #4A6741 60%, #5c7a56 100%);
+    padding: 32px 24px;
+  }
+  .setup-card { background: #fff; border-radius: 18px; padding: 28px 24px; width: 100%; max-width: 380px; }
+  .setup-card h2 { font-size: 18px; color: var(--dark); margin-bottom: 6px; font-family: Georgia, serif; font-weight: normal; }
+  .setup-card p { font-size: 12px; color: #888; margin-bottom: 20px; line-height: 1.6; }
+  .setup-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); margin-bottom: 5px; }
+  .setup-input { width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; font-size: 14px; background: var(--cream); outline: none; margin-bottom: 14px; }
+  .setup-input:focus { border-color: var(--sage); }
+  .setup-btn { width: 100%; padding: 13px; background: var(--dark); color: #fff; border-radius: 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; }
+  .setup-note { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 16px; text-align: center; line-height: 1.7; max-width: 320px; }
+
+  /* APP */
+  #app-screen { padding-bottom: 90px; max-width: 520px; margin: 0 auto; }
+
+  .app-header { background: var(--dark); padding: 52px 18px 16px; color: #fff; position: relative; }
+  .app-logo { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 3px; }
+  .app-title { font-size: 22px; font-weight: 300; font-family: Georgia, serif; }
+  .app-subtitle { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+  .app-stats { display: flex; gap: 8px; margin-top: 14px; }
+  .stat-box { flex: 1; background: rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 12px; }
+  .stat-label { font-size: 10px; color: rgba(255,255,255,0.55); }
+  .stat-value { font-size: 20px; font-weight: 800; }
+  .stat-sub { font-size: 10px; color: rgba(255,255,255,0.5); }
+
+  .tabs { display: flex; background: var(--white); border-bottom: 2px solid var(--border); }
+  .tab { flex: 1; padding: 12px 8px; text-align: center; cursor: pointer; border-bottom: 3px solid transparent; transition: border 0.15s; }
+  .tab.active { border-bottom-color: var(--dark); }
+  .tab-label { font-size: 13px; font-weight: 700; color: #aaa; }
+  .tab.active .tab-label { color: var(--dark); }
+  .tab-sub { font-size: 10px; color: #ccc; margin-top: 1px; }
+
+  .tab-content { padding: 14px; display: none; }
+  .tab-content.active { display: block; }
+
+  .scan-btn { width: 100%; padding: 17px; background: var(--dark); color: #fff; border-radius: 13px; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.2s; }
+  .scan-btn:disabled { background: var(--sage); cursor: not-allowed; }
+  .scan-btn .icon { font-size: 20px; }
+  .img-preview { margin-top: 10px; border-radius: 10px; overflow: hidden; max-height: 140px; display: flex; justify-content: center; background: #000; }
+  .img-preview img { height: 140px; object-fit: contain; }
+
+  .info-box { background: #fffbe6; border: 1px solid #e8d48a; border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; font-size: 12px; color: #7a5c00; line-height: 1.6; }
+  .gmail-row { display: flex; gap: 10px; align-items: flex-end; }
+  .gmail-row select { flex: 1; border: 1px solid var(--border); border-radius: 8px; padding: 10px; font-size: 13px; background: var(--cream); outline: none; }
+  .gmail-btn { padding: 10px 16px; background: var(--dark); color: #fff; border-radius: 8px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+  .gmail-btn:disabled { background: var(--sage); cursor: not-allowed; }
+  .step-log { margin-top: 10px; font-family: monospace; font-size: 11px; color: #888; }
+  .step-log div { padding: 1px 0; }
+
+  .status { margin-top: 10px; padding: 10px 14px; border-radius: 8px; font-size: 13px; line-height: 1.5; }
+  .status.success { background: var(--light); color: var(--dark); border: 1px solid var(--border); }
+  .status.error   { background: var(--light-red); color: var(--red); border: 1px solid #fcc; }
+  .status.info    { background: var(--light); color: var(--dark); border: 1px solid var(--border); }
+  .status.warning { background: #fffbe6; color: #7a5c00; border: 1px solid #e8d48a; }
+
+  .section-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .section-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); font-weight: 700; }
+  .hide-label { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #888; cursor: pointer; }
+
+  .receipt-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; transition: opacity 0.2s; }
+  .receipt-card.entered { opacity: 0.55; background: #f9f9f9; }
+  .card-row { display: flex; align-items: center; padding: 10px 12px; cursor: pointer; gap: 8px; }
+  .card-check input { width: 17px; height: 17px; accent-color: var(--dark); cursor: pointer; }
+  .card-info { flex: 1; min-width: 0; }
+  .card-vendor { font-weight: 700; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .entered .card-vendor { text-decoration: line-through; color: #aaa; }
+  .card-meta { font-size: 10px; color: #aaa; margin-top: 2px; }
+  .card-amount { font-weight: 800; font-size: 15px; color: var(--dark); flex-shrink: 0; }
+  .entered .card-amount { color: #aaa; }
+  .card-arrow { font-size: 10px; color: #ccc; margin-left: 2px; }
+  .card-edit { border-top: 1px solid var(--border); padding: 12px; }
+  .edit-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .edit-field { flex: 1 1 calc(50% - 5px); min-width: 0; }
+  .edit-field.wide { flex: 1 1 100%; }
+  .edit-field label { display: block; font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); margin-bottom: 3px; }
+  .edit-field input, .edit-field select { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 7px 8px; font-size: 12px; background: var(--cream); outline: none; }
+  .edit-field input:focus, .edit-field select:focus { border-color: var(--sage); }
+  .del-btn { margin-top: 10px; padding: 5px 12px; background: var(--light-red); color: var(--red); border: 1px solid #fcc; border-radius: 6px; font-size: 11px; font-weight: 700; }
+
+  /* Vagaro items table */
+  .vagaro-section { margin-top: 12px; border-top: 1px dashed var(--border); padding-top: 10px; }
+  .vagaro-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vagaro-hdr-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); }
+  .add-item-btn { padding: 4px 10px; background: var(--light-blue); color: var(--blue); border-radius: 6px; font-size: 11px; font-weight: 700; border: 1px solid #90caf9; }
+  .vagaro-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .vagaro-table th { text-align: left; padding: 3px 4px; color: var(--sage); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+  .vagaro-table td { padding: 3px 2px; }
+  .vagaro-table input { width: 100%; border: 1px solid var(--border); border-radius: 4px; padding: 4px 5px; font-size: 11px; background: var(--cream); min-width: 0; }
+  .col-sku { width: 58px; }
+  .col-qty { width: 36px; }
+  .col-price { width: 50px; }
+  .col-del { width: 22px; text-align: center; }
+  .vagaro-del { background: none; color: #e74c3c; font-size: 14px; padding: 2px 4px; line-height: 1; }
+  .vagaro-note { font-size: 10px; color: #aaa; margin-top: 6px; font-style: italic; }
+
+  .badge { display: inline-block; padding: 1px 7px; border-radius: 7px; font-size: 9px; font-weight: 700; letter-spacing: 0.07em; }
+  .source-badge { display: inline-block; padding: 1px 6px; border-radius: 5px; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-left: 4px; }
+  .src-camera { background: #f1f8e9; color: #33691e; }
+  .src-gmail  { background: #e3f2fd; color: #1565c0; }
+  .dest-vagaro { background: #e8f4fd; color: #1a5276; border: 1px solid #90caf9; }
+
+  .empty { text-align: center; padding: 48px 24px; color: #bbb; }
+  .empty .icon { font-size: 42px; margin-bottom: 12px; }
+  .empty p { font-size: 13px; line-height: 1.8; color: #aaa; }
+
+  .footer { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 520px; background: var(--white); border-top: 1px solid var(--border); padding: 10px 14px; display: flex; gap: 8px; box-shadow: 0 -2px 12px rgba(0,0,0,0.07); z-index: 100; }
+  .footer-clear { width: 42px; flex-shrink: 0; padding: 11px 0; background: var(--light-red); color: var(--red); border: 1px solid #fcc; border-radius: 9px; font-size: 16px; }
+  .footer-vagaro { flex: 1; padding: 11px 0; background: var(--blue); color: #fff; border-radius: 9px; font-size: 12px; font-weight: 700; }
+  .footer-xero { flex: 1; padding: 11px 0; background: var(--gold); color: #fff; border-radius: 9px; font-size: 12px; font-weight: 700; }
+
+  .spin { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; margin-right: 6px; vertical-align: middle; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .gear-btn { position: absolute; top: 54px; right: 16px; background: rgba(255,255,255,0.15); border: none; color: rgba(255,255,255,0.7); border-radius: 50%; width: 34px; height: 34px; font-size: 16px; display: flex; align-items: center; justify-content: center; }
+</style>
+</head>
+<body>
+
+<!-- PIN SCREEN -->
+<div id="pin-screen">
+  <div class="pin-logo">Emerald & Opal</div>
+  <div class="pin-title">Expense Manager</div>
+  <div class="pin-sub">Enter your PIN to continue</div>
+  <div class="pin-dots" id="pin-dots">
+    <div class="pin-dot" id="d0"></div><div class="pin-dot" id="d1"></div>
+    <div class="pin-dot" id="d2"></div><div class="pin-dot" id="d3"></div>
+  </div>
+  <div class="pin-grid">
+    <button class="pin-key" onclick="pinKey('1')">1</button>
+    <button class="pin-key" onclick="pinKey('2')">2</button>
+    <button class="pin-key" onclick="pinKey('3')">3</button>
+    <button class="pin-key" onclick="pinKey('4')">4</button>
+    <button class="pin-key" onclick="pinKey('5')">5</button>
+    <button class="pin-key" onclick="pinKey('6')">6</button>
+    <button class="pin-key" onclick="pinKey('7')">7</button>
+    <button class="pin-key" onclick="pinKey('8')">8</button>
+    <button class="pin-key" onclick="pinKey('9')">9</button>
+    <button class="pin-key empty"></button>
+    <button class="pin-key" onclick="pinKey('0')">0</button>
+    <button class="pin-key del" onclick="pinDel()">&#9003;</button>
+  </div>
+  <div class="pin-error" id="pin-error"></div>
+  <div class="pin-setup-hint" id="pin-hint"></div>
+</div>
+
+<!-- SETUP SCREEN -->
+<div id="setup-screen" style="display:none">
+  <div class="setup-card">
+    <h2>First-time Setup</h2>
+    <p>Settings save to this device only and are never shared.</p>
+
+    <div class="setup-label">Anthropic API Key</div>
+    <input class="setup-input" type="password" id="setup-key" placeholder="sk-ant-..." autocomplete="off" />
+
+    <div class="setup-label">4-digit PIN</div>
+    <input class="setup-input" type="number" id="setup-pin" placeholder="e.g. 2847" maxlength="4" autocomplete="off" />
+    <p style="font-size:11px;color:#aaa;margin-bottom:16px;margin-top:-8px;">Locks the page so only you can open it.</p>
+
+    <button class="setup-btn" onclick="saveSetup()">Save &amp; Open App &rarr;</button>
+  </div>
+  <div class="setup-note">
+    Your API key stays on this device in browser storage.<br>
+    Sent only to Anthropic when scanning. ~$0.01 per scan.
+  </div>
+</div>
+
+<!-- APP SCREEN -->
+<div id="app-screen" style="display:none">
+  <div class="app-header">
+    <div class="app-logo">Emerald &amp; Opal &middot; Studio Tools</div>
+    <div class="app-title">Expense Manager</div>
+    <div class="app-subtitle">&#128247; Camera &middot; &#128231; Gmail &middot; Exports to Vagaro &amp; Xero</div>
+    <div class="app-stats" id="app-stats" style="display:none">
+      <div class="stat-box">
+        <div class="stat-label">Pending Xero</div>
+        <div class="stat-value" id="stat-xero-total">$0.00</div>
+        <div class="stat-sub" id="stat-xero-count">0 expenses</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Pending Vagaro</div>
+        <div class="stat-value" id="stat-vagaro-count">0</div>
+        <div class="stat-sub" id="stat-vagaro-sub">inventory items</div>
+      </div>
+    </div>
+    <button class="gear-btn" onclick="showSettings()" title="Settings">&#9881;&#65039;</button>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" id="tab-camera" onclick="switchTab('camera')">
+      <div class="tab-label">&#128247; Camera</div>
+      <div class="tab-sub">Works on phone</div>
+    </div>
+    <div class="tab" id="tab-gmail" onclick="switchTab('gmail')">
+      <div class="tab-label">&#128231; Gmail</div>
+      <div class="tab-sub">Desktop only</div>
+    </div>
+  </div>
+
+  <!-- Camera tab -->
+  <div class="tab-content active" id="content-camera">
+    <input type="file" id="file-input" accept="image/*" capture="environment" style="display:none" onchange="handlePhoto(event)" />
+    <button class="scan-btn" id="scan-btn" onclick="document.getElementById('file-input').click()">
+      <span class="icon">&#128247;</span> Photograph a Receipt
+    </button>
+    <div class="img-preview" id="img-preview" style="display:none"><img id="preview-img" src="" alt="preview" /></div>
+    <div id="cam-status"></div>
+    <div style="margin-top:8px;font-size:11px;color:#bbb;font-style:italic;">Opens camera directly on iPhone and Android</div>
+  </div>
+
+  <!-- Gmail tab -->
+  <div class="tab-content" id="content-gmail">
+    <div class="info-box">&#128187; <strong>Desktop browser required</strong> &mdash; open this page on your Mac or PC to use Gmail scanning.</div>
+    <div class="gmail-row">
+      <select id="gmail-days">
+        <option value="30">Last 30 days</option>
+        <option value="60">Last 60 days</option>
+        <option value="90" selected>Last 90 days</option>
+        <option value="180">Last 6 months</option>
+        <option value="365">Last 12 months</option>
+      </select>
+      <button class="gmail-btn" id="gmail-btn" onclick="runGmailScan()">&#128269; Scan Gmail</button>
+    </div>
+    <div class="step-log" id="gmail-steps"></div>
+    <div id="gmail-status"></div>
+  </div>
+
+  <!-- Receipt list -->
+  <div style="padding:0 14px 14px">
+    <div class="section-hdr" id="list-header" style="display:none">
+      <div class="section-label">All Receipts &mdash; tap to edit</div>
+      <label class="hide-label">
+        <input type="checkbox" id="hide-entered" onchange="renderList()" style="accent-color:var(--dark)" />
+        Hide entered
+      </label>
+    </div>
+    <div id="receipt-list"></div>
+    <div class="empty" id="empty-state">
+      <div class="icon">&#129534;</div>
+      <p><strong style="color:var(--sage)">&#128247; Camera</strong> &mdash; photograph receipts on your phone.<br>
+         <strong style="color:var(--sage)">&#128231; Gmail</strong> &mdash; scan your inbox on desktop.<br>
+         <span style="font-size:11px">Jewelry invoices &rarr; Vagaro &nbsp;&bull;&nbsp; All else &rarr; Xero</span></p>
+    </div>
+  </div>
+
+  <div class="footer" id="footer" style="display:none">
+    <button class="footer-clear" onclick="clearAll()" title="Clear all">&#128465;</button>
+    <button class="footer-vagaro" onclick="exportVagaro()">&#128230; Export Vagaro</button>
+    <button class="footer-xero" onclick="exportXero()">&#11015; Export Xero</button>
+  </div>
+</div>
+
+<script>
+// ── Constants ─────────────────────────────────────────────────────────────
+const ALL_CATS       = ["Jewelry","Supplies","Equipment","Shipping","Software","Meals","Travel","Accommodation","Rent","Other"];
+const VAGARO_HEADERS = ["Item","Description","In Stock","Cost","Retail"];
+const XERO_HEADERS   = ["Date","Vendor","Description","Amount","Category","Tax","Notes","Source"];
+const XERO_ACCTS     = { Supplies:"420", Equipment:"480", Shipping:"408", Software:"429", Meals:"404", Travel:"441", Accommodation:"441", Rent:"425", Other:"999" };
+const BADGE_COLORS   = {
+  Jewelry:["#e8f4fd","#1a5276"], Supplies:["#e8f4fd","#1a5276"], Equipment:["#fef9e7","#7d6608"],
+  Shipping:["#fdf2e9","#784212"], Software:["#e8f8f5","#1e8449"], Meals:["#fdf2e9","#6e2f0c"],
+  Travel:["#fff3e0","#e65100"], Accommodation:["#f3e5f5","#6a1b9a"], Rent:["#f9f0ff","#5e0fa0"], Other:["#f5f5f5","#555"],
+};
+const STORAGE_KEY = "eo-receipts-v2";
+const PIN_KEY     = "eo-pin";
+const APIKEY_KEY  = "eo-apikey";
+
+// ── State ─────────────────────────────────────────────────────────────────
+let receipts   = [];
+let pinBuffer  = "";
+let expandedId = null;
+
+// ── Storage ───────────────────────────────────────────────────────────────
+function loadReceipts() { try { const s = localStorage.getItem(STORAGE_KEY); return s ? JSON.parse(s) : []; } catch { return []; } }
+function saveReceipts() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(receipts)); } catch {} }
+function getPin()    { return localStorage.getItem(PIN_KEY)    || ""; }
+function getApiKey() { return localStorage.getItem(APIKEY_KEY) || ""; }
+function uid()      { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
+function todayStr() { return new Date().toLocaleDateString("en-US",{month:"2-digit",day:"2-digit",year:"numeric"}); }
+
+// ── Boot ──────────────────────────────────────────────────────────────────
+window.addEventListener("DOMContentLoaded", () => {
+  if (!getPin() || !getApiKey()) {
+    document.getElementById("pin-screen").style.display = "none";
+    document.getElementById("setup-screen").style.display = "flex";
+  } else {
+    showPinScreen();
+  }
+});
+
+// ── Setup ─────────────────────────────────────────────────────────────────
+function saveSetup() {
+  const key = document.getElementById("setup-key").value.trim();
+  const pin = document.getElementById("setup-pin").value.trim();
+  if (!key.startsWith("sk-ant-")) { alert("Please enter a valid Anthropic API key (starts with sk-ant-)"); return; }
+  if (pin.length !== 4 || isNaN(pin)) { alert("PIN must be exactly 4 digits"); return; }
+  localStorage.setItem(APIKEY_KEY, key);
+  localStorage.setItem(PIN_KEY, pin);
+  openApp();
+}
+
+// ── PIN ───────────────────────────────────────────────────────────────────
+function showPinScreen() {
+  pinBuffer = "";
+  updatePinDots();
+  document.getElementById("pin-error").textContent = "";
+}
+
+function pinKey(digit) {
+  if (pinBuffer.length >= 4) return;
+  pinBuffer += digit;
+  updatePinDots();
+  if (pinBuffer.length === 4) {
+    setTimeout(() => {
+      if (pinBuffer === getPin()) { openApp(); }
+      else {
+        document.getElementById("pin-error").textContent = "Incorrect PIN — try again";
+        pinBuffer = ""; updatePinDots();
+      }
+    }, 100);
+  }
+}
+function pinDel() { pinBuffer = pinBuffer.slice(0,-1); updatePinDots(); document.getElementById("pin-error").textContent = ""; }
+function updatePinDots() { for (let i=0;i<4;i++) document.getElementById("d"+i).classList.toggle("filled", i<pinBuffer.length); }
+
+function openApp() {
+  document.getElementById("pin-screen").style.display = "none";
+  document.getElementById("setup-screen").style.display = "none";
+  document.getElementById("app-screen").style.display = "block";
+  receipts = loadReceipts();
+  renderList();
+}
+
+function showSettings() {
+  if (!confirm("Reset your API key or PIN?")) return;
+  localStorage.removeItem(PIN_KEY); localStorage.removeItem(APIKEY_KEY);
+  location.reload();
+}
+
+function switchTab(name) {
+  ["camera","gmail"].forEach(t => {
+    document.getElementById("tab-"+t).classList.toggle("active", t===name);
+    document.getElementById("content-"+t).classList.toggle("active", t===name);
+  });
+}
+
+// ── API ───────────────────────────────────────────────────────────────────
+async function callAPI(body, useMCP) {
+  const headers = { "Content-Type":"application/json", "x-api-key":getApiKey(), "anthropic-version":"2023-06-01" };
+  if (useMCP) headers["anthropic-beta"] = "mcp-client-2025-04-04";
+  const resp = await fetch("https://api.anthropic.com/v1/messages", { method:"POST", headers, body:JSON.stringify(body) });
+  if (!resp.ok) { const e = await resp.json().catch(()=>({})); throw new Error(e?.error?.message || "API error "+resp.status); }
+  return resp.json();
+}
+
+function extractJSON(text, type) {
+  const m = text.match(type==="array" ? /\[[\s\S]*\]/ : /\{[\s\S]*\}/);
+  if (!m) return type==="array" ? [] : {};
+  try { return JSON.parse(m[0]); } catch { return type==="array" ? [] : {}; }
+}
+
+// ── Camera ────────────────────────────────────────────────────────────────
+async function handlePhoto(e) {
+  const file = e.target.files[0]; if (!file) return;
+  e.target.value = "";
+  const url = URL.createObjectURL(file);
+  document.getElementById("preview-img").src = url;
+  document.getElementById("img-preview").style.display = "flex";
+  setScanBtnLoading(true);
+  showStatus("cam-status","info","Reading receipt...");
+  try {
+    const b64 = await toBase64(file);
+    const data = await callAPI({
+      model:"claude-sonnet-4-20250514", max_tokens:1200,
+      system:`Receipt parser for Emerald & Opal Piercing Studio. Return ONLY valid JSON. Today: ${todayStr()}.`,
+      messages:[{ role:"user", content:[
+        { type:"image", source:{ type:"base64", media_type:file.type||"image/jpeg", data:b64 } },
+        { type:"text", text:`Analyze this receipt or invoice and return ONLY valid JSON (no markdown).
+
+If it is a JEWELRY / PIERCING INVENTORY INVOICE (suppliers like Junipurr, Umanative, Inverness, Studex, Blomdahl):
+{"Date":"MM/DD/YYYY","Vendor":"name","Description":"Invoice summary","Amount":"total","Category":"Jewelry","Tax":"","Notes":"order# if shown","Items":[{"SKU":"item code","Description":"item name","Qty":"quantity","Cost":"unit cost","Retail":"retail price or empty"}]}
+Extract every line item. Leave Retail blank if not on the invoice.
+
+If it is any other EXPENSE RECEIPT:
+{"Date":"MM/DD/YYYY","Vendor":"name","Description":"brief","Amount":"total","Category":"Supplies|Equipment|Shipping|Software|Meals|Travel|Accommodation|Rent|Other","Tax":"number or empty","Notes":"receipt# if shown","Items":[]}
+
+Return ONLY the JSON.` }
+      ]}]
+    });
+    const text = data.content.filter(b=>b.type==="text").map(b=>b.text).join("");
+    const row = extractJSON(text,"object");
+    if (!row.Vendor) throw new Error("Could not read receipt — try a clearer, well-lit photo.");
+    if (!row.Items) row.Items = [];
+    row._id = uid(); row._entered = false; row.Source = "Camera";
+    receipts.unshift(row);
+    saveReceipts(); renderList();
+    const note = row.Items.length ? ` · ${row.Items.length} inventory items` : "";
+    showStatus("cam-status","success",`Got it! $${row.Amount} at ${row.Vendor}${note}. Tap card to edit.`);
+    setTimeout(()=>{ document.getElementById("img-preview").style.display="none"; URL.revokeObjectURL(url); }, 2500);
+  } catch(err) {
+    showStatus("cam-status","error", err.message);
+    document.getElementById("img-preview").style.display = "none";
+  } finally { setScanBtnLoading(false); }
+}
+
+function setScanBtnLoading(on) {
+  const btn = document.getElementById("scan-btn");
+  btn.disabled = on;
+  btn.innerHTML = on ? `<span class="spin"></span> Reading receipt...` : `<span class="icon">&#128247;</span> Photograph a Receipt`;
+}
+
+// ── Gmail scan ────────────────────────────────────────────────────────────
+async function runGmailScan() {
+  const days = document.getElementById("gmail-days").value;
+  const btn  = document.getElementById("gmail-btn");
+  btn.disabled = true; btn.innerHTML = `<span class="spin"></span>Scanning...`;
+  document.getElementById("gmail-steps").innerHTML = "";
+  clearStatus("gmail-status");
+  const addStep = t => { const d=document.createElement("div"); d.textContent=t; document.getElementById("gmail-steps").appendChild(d); };
+
+  try {
+    addStep("&#128269; Searching Gmail for receipts & invoices...");
+    const MCP = { type:"url", url:"https://gmailmcp.googleapis.com/mcp/v1", name:"gmail-mcp" };
+    const messages = [{ role:"user", content:`Search Gmail for order receipts, invoices, and purchase confirmations from the last ${days} days. Search for: "order confirmation", "receipt", "invoice", "your order", "payment receipt", "purchase". For each email include: subject, sender, date, total amount, and all line items (with item codes/SKUs, descriptions, quantities, unit costs). Return up to 30 results as JSON array ONLY.` }];
+    let fullText = ""; let iters = 0;
+
+    while (iters++ < 8) {
+      const data = await callAPI({ model:"claude-sonnet-4-20250514", max_tokens:4000, system:"Gmail assistant for a piercing studio. Return only JSON. No markdown.", messages, mcp_servers:[MCP] }, true);
+      data.content.filter(b=>b.type==="text").forEach(b=>fullText+=b.text+"\n");
+      data.content.filter(b=>b.type==="mcp_tool_result").forEach(b=>fullText+=(b.content?.[0]?.text||"")+"\n");
+      if (data.stop_reason==="end_turn") break;
+      if (data.content.some(b=>b.type==="mcp_tool_use")) {
+        messages.push({ role:"assistant", content:data.content });
+        const uses = data.content.filter(b=>b.type==="mcp_tool_use");
+        messages.push({ role:"user", content:uses.map(tu=>({ type:"mcp_tool_result", tool_use_id:tu.id, content:data.content.filter(b=>b.type==="mcp_tool_result"&&b.tool_use_id===tu.id).map(r=>r.content?.[0]||{type:"text",text:""}) })) });
+      } else break;
+    }
+
+    const emails = extractJSON(fullText,"array");
+    if (!emails.length) { showStatus("gmail-status","warning","No receipt emails found. Try a longer date range."); return; }
+    addStep(`Found ${emails.length} emails. Parsing with AI...`);
+
+    const parseData = await callAPI({
+      model:"claude-sonnet-4-20250514", max_tokens:5000,
+      system:"Bookkeeping assistant for Emerald & Opal Piercing Studio. Return only valid JSON.",
+      messages:[{ role:"user", content:`Parse these emails for Emerald & Opal's bookkeeping.
+
+Jewelry/inventory suppliers: Junipurr, Umanative, Inverness, Studex, Blomdahl, BVLA, Neometal.
+Regular expenses: rent, software (Vagaro, Squarespace, Google), supplies, shipping, meals, travel.
+
+Emails:
+${JSON.stringify(emails)}
+
+For each email return ONE of:
+
+JEWELRY INVOICE: {"Date":"MM/DD/YYYY","Vendor":"","Description":"","Amount":"total","Category":"Jewelry","Tax":"","Notes":"order#","Items":[{"SKU":"item code","Description":"item name","Qty":"quantity","Cost":"unit cost","Retail":"retail if shown else empty"}]}
+
+OTHER EXPENSE: {"Date":"MM/DD/YYYY","Vendor":"","Description":"","Amount":"total","Category":"Supplies|Equipment|Shipping|Software|Meals|Travel|Accommodation|Rent|Other","Tax":"","Notes":"","Items":[]}
+
+Skip emails with no actual purchase (newsletters, promotions, general correspondence).
+Return JSON array ONLY.` }]
+    });
+
+    const pt = parseData.content.filter(b=>b.type==="text").map(b=>b.text).join("");
+    const rows = extractJSON(pt,"array");
+    if (!rows.length) { showStatus("gmail-status","warning","AI found no expenses in these emails."); return; }
+
+    const stamped = rows.map(r=>({...r, _id:uid(), _entered:false, Source:"Gmail", Items:r.Items||[]}));
+    receipts.unshift(...stamped);
+    saveReceipts(); renderList();
+
+    const invCnt  = stamped.filter(r=>r.Category==="Jewelry").length;
+    const itemCnt = stamped.reduce((n,r)=>n+(r.Items||[]).length,0);
+    const expCnt  = stamped.filter(r=>r.Category!=="Jewelry").length;
+    addStep(`Done: ${invCnt} inventory invoice${invCnt!==1?"s":""} (${itemCnt} items) + ${expCnt} expense${expCnt!==1?"s":""}.`);
+    showStatus("gmail-status","success",`${stamped.length} entries added from Gmail.`);
+  } catch(err) {
+    showStatus("gmail-status","error", err.message+". Make sure you're on desktop and Gmail is connected.");
+  } finally {
+    btn.disabled = false; btn.innerHTML = "&#128269; Scan Gmail";
+  }
+}
+
+// ── Receipt list ──────────────────────────────────────────────────────────
+function renderList() {
+  const hideEntered = document.getElementById("hide-entered").checked;
+  const pending  = receipts.filter(r=>!r._entered);
+  const visible  = hideEntered ? pending : receipts;
+
+  const xeroItems   = pending.filter(r=>r.Category!=="Jewelry");
+  const vagaroInvs  = pending.filter(r=>r.Category==="Jewelry");
+  const xeroTotal   = xeroItems.reduce((s,r)=>s+(parseFloat(r.Amount)||0),0);
+  const vagaroItems = vagaroInvs.reduce((n,r)=>n+(r.Items||[]).length,0);
+
+  document.getElementById("stat-xero-total").textContent  = "$"+xeroTotal.toFixed(2);
+  document.getElementById("stat-xero-count").textContent  = xeroItems.length+" expense"+(xeroItems.length!==1?"s":"");
+  document.getElementById("stat-vagaro-count").textContent = vagaroItems;
+  document.getElementById("stat-vagaro-sub").textContent  = "from "+vagaroInvs.length+" invoice"+(vagaroInvs.length!==1?"s":"");
+
+  const show = receipts.length > 0;
+  document.getElementById("app-stats").style.display   = show ? "flex" : "none";
+  document.getElementById("list-header").style.display  = show ? "flex" : "none";
+  document.getElementById("footer").style.display       = show ? "flex" : "none";
+  document.getElementById("empty-state").style.display  = show ? "none" : "block";
+
+  const list = document.getElementById("receipt-list");
+  list.innerHTML = "";
+
+  if (visible.length === 0 && receipts.length > 0) {
+    list.innerHTML = `<div style="text-align:center;padding:32px;color:#bbb;font-size:13px;font-style:italic">All receipts marked as entered! &#127881;</div>`;
+    return;
+  }
+
+  visible.forEach(r => {
+    const [bg, clr] = BADGE_COLORS[r.Category] || BADGE_COLORS.Other;
+    const srcClass  = r.Source==="Gmail" ? "src-gmail" : "src-camera";
+    const srcIcon   = r.Source==="Gmail" ? "&#128231;" : "&#128247;";
+    const isVagaro  = r.Category==="Jewelry";
+    const itemCnt   = (r.Items||[]).length;
+    const isOpen    = expandedId === r._id;
+
+    const card = document.createElement("div");
+    card.className = "receipt-card"+(r._entered?" entered":"");
+    card.innerHTML = `
+      <div class="card-row" onclick="toggleCard('${r._id}')">
+        <div class="card-check"><input type="checkbox" ${r._entered?"checked":""} onclick="event.stopPropagation();toggleEntered('${r._id}')" /></div>
+        <div class="card-info">
+          <div class="card-vendor">${esc(r.Vendor||"Unknown")} <span class="source-badge ${srcClass}">${srcIcon}</span>${isVagaro?` <span class="source-badge dest-vagaro">Vagaro</span>`:""}</div>
+          <div class="card-meta">${esc(r.Date||"")} &middot; <span class="badge" style="background:${bg};color:${clr}">${esc(r.Category||"Other")}</span>${isVagaro&&itemCnt?` &middot; ${itemCnt} items`:""}</div>
+        </div>
+        <div class="card-amount">$${esc(r.Amount||"0")}</div>
+        <div class="card-arrow">${isOpen?"&#9650;":"&#9660;"}</div>
+      </div>
+      ${isOpen ? `
+      <div class="card-edit">
+        <div class="edit-grid">
+          ${ef("Date","Date",r,"",r._id)}
+          ${ef("Amount ($)","Amount",r,"",r._id)}
+          ${ef("Vendor","Vendor",r,"wide",r._id)}
+          ${ef("Description","Description",r,"wide",r._id)}
+          ${editCat(r,r._id)}
+          ${ef("Tax ($)","Tax",r,"",r._id)}
+          ${ef("Notes","Notes",r,"wide",r._id)}
+        </div>
+        ${isVagaro ? vagaroItemsHTML(r) : ""}
+        <button class="del-btn" onclick="deleteReceipt('${r._id}')">&#128465; Remove</button>
+      </div>` : ""}
+    `;
+    list.appendChild(card);
+  });
+}
+
+function vagaroItemsHTML(r) {
+  const items = r.Items||[];
+  const rows = items.map((item,i)=>`
+    <tr>
+      <td class="col-sku"><input value="${esc(item.SKU||"")}" placeholder="SKU" onchange="updateItem('${r._id}',${i},'SKU',this.value)" /></td>
+      <td><input value="${esc(item.Description||"")}" placeholder="Item name" onchange="updateItem('${r._id}',${i},'Description',this.value)" /></td>
+      <td class="col-qty"><input value="${esc(item.Qty||"")}" placeholder="Qty" onchange="updateItem('${r._id}',${i},'Qty',this.value)" /></td>
+      <td class="col-price"><input value="${esc(item.Cost||"")}" placeholder="0.00" onchange="updateItem('${r._id}',${i},'Cost',this.value)" /></td>
+      <td class="col-price"><input value="${esc(item.Retail||"")}" placeholder="0.00" onchange="updateItem('${r._id}',${i},'Retail',this.value)" /></td>
+      <td class="col-del"><button class="vagaro-del" onclick="removeItem('${r._id}',${i})">&#215;</button></td>
+    </tr>`).join("");
+  return `
+    <div class="vagaro-section">
+      <div class="vagaro-hdr">
+        <span class="vagaro-hdr-label">&#128230; Vagaro Inventory Items</span>
+        <button class="add-item-btn" onclick="addItem('${r._id}')">+ Add Item</button>
+      </div>
+      <table class="vagaro-table">
+        <thead><tr><th>SKU</th><th>Description</th><th>Qty</th><th>Cost</th><th>Retail</th><th></th></tr></thead>
+        <tbody>${rows||`<tr><td colspan="6" style="text-align:center;padding:10px;color:#bbb;font-size:11px">No items &mdash; tap + Add Item or re-scan invoice</td></tr>`}</tbody>
+      </table>
+      <div class="vagaro-note">Retail = what you charge customers in Vagaro. Leave blank to fill in later.</div>
+    </div>`;
+}
+
+function ef(label, field, r, cls, id) {
+  return `<div class="edit-field ${cls}"><label>${label}</label><input value="${esc(r[field]||"")}" onchange="updateField('${id}','${field}',this.value)" /></div>`;
+}
+function editCat(r, id) {
+  const opts = ALL_CATS.map(c=>`<option${c===r.Category?" selected":""}>${c}</option>`).join("");
+  return `<div class="edit-field"><label>Category</label><select onchange="updateField('${id}','Category',this.value);renderList()">${opts}</select></div>`;
+}
+function esc(s) { return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+function toggleCard(id)      { expandedId = expandedId===id ? null : id; renderList(); }
+function toggleEntered(id)   { const r=receipts.find(x=>x._id===id); if(r) r._entered=!r._entered; saveReceipts(); renderList(); }
+function updateField(id,f,v) { const r=receipts.find(x=>x._id===id); if(r) r[f]=v; saveReceipts(); }
+function deleteReceipt(id)   { receipts=receipts.filter(r=>r._id!==id); expandedId=null; saveReceipts(); renderList(); }
+function clearAll()          { if(!confirm("Clear all receipts? Cannot be undone.")) return; receipts=[]; expandedId=null; saveReceipts(); renderList(); }
+
+function addItem(id) {
+  const r=receipts.find(x=>x._id===id); if(!r) return;
+  if(!r.Items) r.Items=[];
+  r.Items.push({SKU:"",Description:"",Qty:"1",Cost:"",Retail:""});
+  expandedId=id; saveReceipts(); renderList();
+}
+function removeItem(id,idx) {
+  const r=receipts.find(x=>x._id===id); if(!r||!r.Items) return;
+  r.Items.splice(idx,1); expandedId=id; saveReceipts(); renderList();
+}
+function updateItem(id,idx,field,val) {
+  const r=receipts.find(x=>x._id===id); if(!r||!r.Items||!r.Items[idx]) return;
+  r.Items[idx][field]=val; saveReceipts();
+}
+
+// ── Exports ───────────────────────────────────────────────────────────────
+function csvEsc(v) {
+  const s=String(v??"");
+  return (s.includes(",")||s.includes('"')||s.includes("\n")) ? `"${s.replace(/"/g,"'")}"` : s;
+}
+
+function exportVagaro() {
+  const invReceipts = receipts.filter(r=>!r._entered && r.Category==="Jewelry");
+  const allItems = invReceipts.flatMap(r=>(r.Items||[]).map(item=>({
+    "Item": item.SKU||"", "Description": item.Description||"",
+    "In Stock": item.Qty||"", "Cost": item.Cost||"", "Retail": item.Retail||""
+  })));
+  if (!allItems.length) {
+    alert("No pending Vagaro inventory items.\n\nMake sure Jewelry invoices have line items. Tap a Jewelry card to add items manually.");
+    return;
+  }
+  const lines = [VAGARO_HEADERS.join(","), ...allItems.map(row=>VAGARO_HEADERS.map(h=>csvEsc(row[h]??"")).join(","))];
+  dlCSV(lines.join("\n"), "vagaro-inventory-"+Date.now()+".csv");
+}
+
+function exportXero() {
+  const pending = receipts.filter(r=>!r._entered && r.Category!=="Jewelry");
+  if (!pending.length) { alert("No pending Xero expenses to export."); return; }
+  const withAcct = [...XERO_HEADERS, "Account Code"];
+  const lines = [withAcct.join(","), ...pending.map(r=>[
+    ...XERO_HEADERS.map(h=>csvEsc(r[h]??"")),
+    csvEsc(XERO_ACCTS[r.Category]||"999")
+  ].join(","))];
+  dlCSV(lines.join("\n"), "xero-expenses-"+Date.now()+".csv");
+}
+
+function dlCSV(content, filename) {
+  const blob = new Blob([content],{type:"text/csv"});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a"); a.href=url; a.download=filename; a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────
+function toBase64(file) {
+  return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(r.result.split(",")[1]); r.onerror=()=>rej(new Error("Read failed")); r.readAsDataURL(file); });
+}
+function showStatus(elId,type,text) { const el=document.getElementById(elId); el.className="status "+type; el.textContent=text; }
+function clearStatus(elId) { const el=document.getElementById(elId); el.className=""; el.textContent=""; }
+</script>
+</body>
+</html>
