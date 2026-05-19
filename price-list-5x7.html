@@ -19,16 +19,27 @@
       font-weight: 400;
       src: url('fonts/PlayfairDisplay-Regular.ttf') format('truetype');
     }
-    @page { size: 5in 7in; margin: 0; }
+    @page { size: letter; margin: 0; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      width: 5in;
-      height: 7in;
-      padding: 0.38in 0.44in 0.3in;
+    html, body {
+      width: 8.5in;
+      height: 11in;
       font-family: 'Playfair Display', Georgia, serif;
       background: none;
       color: #2C4A3E;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      width: 5in;
+      height: 7in;
+      padding: 0.38in 0.44in 0.3in;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -157,7 +168,7 @@
     /* ── Footer ── */
     footer {
       text-align: center;
-      margin-top: auto;
+      margin-top: 0.08in;
       font-size: 5.5pt;
       letter-spacing: 0.08em;
       color: #9a8a6a;
@@ -171,6 +182,7 @@
   </style>
 </head>
 <body>
+<div class="card">
 
   <header>
     <div class="business-name">Emerald <span class="ampersand">&amp;</span> Opal</div>
@@ -285,5 +297,6 @@
     </div>
   </footer>
 
+</div><!-- .card -->
 </body>
 </html>
